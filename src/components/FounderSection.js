@@ -47,7 +47,7 @@ function FounderSection() {
     {
       icon: "fa-rocket",
       title: "Early Bitcoin Vision",
-      content: "As an early Bitcoin investor, I made a commitment to hold until 2030's next bull market. This long-term vision reflects my belief in transformative technologies."
+      content: "As an early Bitcoin investor, I made a commitment to hold until the bull market of 2030. This long-term vision reflects my belief in transformative technologies."
     },
     {
       icon: "fa-table-tennis-paddle-ball",
@@ -97,7 +97,7 @@ function FounderSection() {
   ];
 
   return (
-    <section className="py-32 bg-[#1a202c] text-white px-4 relative overflow-hidden">
+    <section className="py-32 bg-gray-900 text-white px-4 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>

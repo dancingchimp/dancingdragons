@@ -42,16 +42,16 @@ function Activities({ fullPage = false }) {
         "Music festivals",
         "Yoga sessions",
         "Movement workshops",
-        "Partner dancing"
+        "Sound healing"
       ]
     },
     {
       icon: "fa-heart",
       title: "Wellness & Growth",
       items: [
-        "Meditation circles",
+        "Meditation",
         "Personal development",
-        "Skill sharing",
+        "Qi Gong",
         "Creative workshops",
         "Community support"
       ]
@@ -60,7 +60,6 @@ function Activities({ fullPage = false }) {
 
   return (
     <section className={`py-32 px-4 bg-gray-900 relative overflow-hidden ${fullPage ? 'pt-40' : ''}`}>
-      {/* Background gradient accents */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"/>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"/>
       
