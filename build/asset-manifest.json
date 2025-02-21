@@ -1,20 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.css",
-    "main.js": "/static/js/main.js",
-    "index.html": "/index.html",
-    "styles/index.css": "/styles/index.css",
-    "styles/variables.css": "/styles/variables.css",
-    "styles/animations.css": "/styles/animations.css",
-    "styles/components.css": "/styles/components.css",
-    "styles/utilities.css": "/styles/utilities.css",
-    "favicon.ico": "/favicon.ico",
-    "logo192.png": "/logo192.png",
-    "logo512.png": "/logo512.png",
-    "manifest.json": "/manifest.json"
+    "main.css": "/dancingdragons/static/css/main.fe1e0c00.css",
+    "main.js": "/dancingdragons/static/js/main.de39fa89.js",
+    "static/js/488.fb990c84.chunk.js": "/dancingdragons/static/js/488.fb990c84.chunk.js",
+    "index.html": "/dancingdragons/index.html",
+    "main.fe1e0c00.css.map": "/dancingdragons/static/css/main.fe1e0c00.css.map",
+    "main.de39fa89.js.map": "/dancingdragons/static/js/main.de39fa89.js.map",
+    "488.fb990c84.chunk.js.map": "/dancingdragons/static/js/488.fb990c84.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.css",
-    "static/js/main.js"
+    "static/css/main.fe1e0c00.css",
+    "static/js/main.de39fa89.js"
   ]
 }

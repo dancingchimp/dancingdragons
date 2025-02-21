@@ -1,11 +1,12 @@
-import React from 'react';
-import CommunityFeature from './CommunityFeature';
+// File: src/components/Community.js
+// Replaces the existing Community.js file
 
-/**
- * Community page component
- */
+import React, { useState } from 'react';
+import CommunityFeature from './CommunityFeature';
+import { SignalContactModal } from './system/SignalContactModal';
+
 function Community() {
-  const SIGNAL_LINK = "https://signal.me/#eu/--flkIBHugKFa1TKXL56Kmeaedgfnriw96sBgiKuTB1izx9pLetA-K8vts4rIN90";
+  const [isSignalModalOpen, setIsSignalModalOpen] = useState(false);
   
   const features = [
     {
@@ -59,23 +60,58 @@ function Community() {
           </div>
 
           <div className="mt-16 text-center">
-            <a 
-              href={SIGNAL_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-flex items-center gap-2
-                bg-orange-500 hover:bg-orange-600 
-                px-8 py-4 rounded-full text-lg font-semibold text-white
-                transition-all duration-300 hover:-translate-y-1
-              "
+            <button 
+              onClick={() => setIsSignalModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 
+                      px-8 py-4 rounded-full text-lg font-semibold text-white
+                      transition-all duration-300 hover:-translate-y-1"
             >
               <i className="fas fa-user-plus"></i>
               Join Our Community
-            </a>
+            </button>
+          </div>
+
+          {/* Privacy features */}
+          <div className="mt-24 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
+              <div className="text-orange-500 text-2xl mb-4">
+                <i className="fas fa-shield-alt"></i>
+              </div>
+              <h3 className="text-lg font-semibold mb-2 text-orange-300">Vetted Members</h3>
+              <p className="text-gray-400">Personal introduction ensures community safety</p>
+            </div>
+            
+            <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
+              <div className="text-orange-500 text-2xl mb-4">
+                <i className="fas fa-lock"></i>
+              </div>
+              <h3 className="text-lg font-semibold mb-2 text-orange-300">Encrypted Chats</h3>
+              <p className="text-gray-400">End-to-end encrypted Signal groups</p>
+            </div>
+            
+            <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
+              <div className="text-orange-500 text-2xl mb-4">
+                <i className="fas fa-user-secret"></i>
+              </div>
+              <h3 className="text-lg font-semibold mb-2 text-orange-300">Private Events</h3>
+              <p className="text-gray-400">Location details shared securely</p>
+            </div>
+            
+            <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
+              <div className="text-orange-500 text-2xl mb-4">
+                <i className="fas fa-database"></i>
+              </div>
+              <h3 className="text-lg font-semibold mb-2 text-orange-300">Zero Storage</h3>
+              <p className="text-gray-400">No personal data stored</p>
+            </div>
           </div>
         </div>
       </div>
+
+      <SignalContactModal 
+        isOpen={isSignalModalOpen}
+        onClose={() => setIsSignalModalOpen(false)}
+      />
     </section>
   );
 }

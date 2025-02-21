@@ -11,9 +11,10 @@ import Activities from './components/Activities';
 import Community from './components/Community';
 import CommunityJoin from './components/community/CommunityJoin';
 import FounderSection from './components/FounderSection';
-import { VideoLibrary } from './components/video-library/VideoLibrary';
+import Events from './components/Events/Events';
 import Navigation from './components/Navigation/Navigation';
 import ScrollTopButton from './components/ScrollTopButton';
+import { VideoLibrary } from './components/video-library/VideoLibrary';
 
 // Toast notification component for system messages
 function Toast({ message, type, onClose }) {
@@ -146,6 +147,8 @@ function AppContent() {
         return <Activities fullPage={true} />;
       case '/community':
         return <Community />;
+      case '/events':
+        return <Events />;
       case '/join':
         return <CommunityJoin onNotification={addToast} />;
       case '/library':

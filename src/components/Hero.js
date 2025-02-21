@@ -1,13 +1,19 @@
-import React from 'react';
+// File: src/components/Hero.js
+// Replaces the existing Hero.js file
+
+import React, { useState } from 'react';
+import { SignalContactModal } from './system/SignalContactModal';
 
 function Hero() {
-  const SIGNAL_LINK = "https://signal.group/#CjQKIEedMr4WY051GNFTAWZZeQNQUKJmP3RWfQtQvlZ8M M2nEhBMYdI60i9uQ50u3g9Rkmaf";
+  const [isSignalModalOpen, setIsSignalModalOpen] = useState(false);
   const GITBOOK_LINK = "https://dancingchimp.gitbook.io/dancingdragons/";
   
   return (
     <section className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-4 pt-16 relative overflow-hidden">
-      {/* Background gradient effect */}
+      {/* Background gradient effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 via-transparent to-transparent"/>
+      <div className="absolute -top-20 -right-20 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"/>
+      <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"/>
       
       <div className="relative text-center max-w-5xl mx-auto py-24">
         <div className="mb-8">
@@ -26,17 +32,15 @@ function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <a 
-            href={SIGNAL_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            onClick={() => setIsSignalModalOpen(true)}
             className="flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 
                      px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 
                      hover:-translate-y-1 hover:shadow-xl group"
           >
             <i className="fas fa-user-plus transform group-hover:scale-110 transition-transform"></i>
             Join Our Community
-          </a>
+          </button>
           
           <a 
             href={GITBOOK_LINK}
@@ -51,10 +55,38 @@ function Hero() {
           </a>
         </div>
 
-        {/* Decorative elements */}
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl"/>
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl"/>
+        {/* Features grid */}
+        <div className="grid md:grid-cols-3 gap-8 mt-24">
+          <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700 hover:border-orange-500/30 transition-all duration-300 group">
+            <div className="text-orange-500 text-3xl mb-4">
+              <i className="fas fa-shield-alt"></i>
+            </div>
+            <h3 className="text-xl font-semibold mb-2 text-orange-300">Privacy First</h3>
+            <p className="text-gray-400">End-to-end encrypted communication with zero data storage</p>
+          </div>
+          
+          <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700 hover:border-orange-500/30 transition-all duration-300 group">
+            <div className="text-orange-500 text-3xl mb-4">
+              <i className="fas fa-users"></i>
+            </div>
+            <h3 className="text-xl font-semibold mb-2 text-orange-300">Real Connections</h3>
+            <p className="text-gray-400">Small groups focused on authentic relationships</p>
+          </div>
+          
+          <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700 hover:border-orange-500/30 transition-all duration-300 group">
+            <div className="text-orange-500 text-3xl mb-4">
+              <i className="fas fa-heart"></i>
+            </div>
+            <h3 className="text-xl font-semibold mb-2 text-orange-300">Supportive Growth</h3>
+            <p className="text-gray-400">Guided practices and shared adventures</p>
+          </div>
+        </div>
       </div>
+
+      <SignalContactModal 
+        isOpen={isSignalModalOpen}
+        onClose={() => setIsSignalModalOpen(false)}
+      />
     </section>
   );
 }
