@@ -1,22 +1,20 @@
 // File: src/App.js
 
 import React, { useEffect, useState } from 'react';
-import { useAppContext, EventProvider } from './context';
-import { useScrollPosition, useWindowSize } from './hooks';
+import { AppProvider, useAppContext } from './context/AppContext';
+import { EventProvider } from './context/EventContext';
+import { useScrollPosition, useWindowSize } from './hooks/useUtils';
 
-// Component imports
-import {
-  Activities,
-  Hero,
-  Community,
-  FounderSection,
-  ScrollTopButton
-} from './components';
-
-import Events from './components/Events';
-import Navigation from './components/Navigation';
-import { CommunityJoin } from './components/community';
-import { VideoLibrary } from './components/video-library';
+// Import components
+import Hero from './components/Hero';
+import Activities from './components/Activities';
+import Community from './components/Community';
+import CommunityJoin from './components/community/CommunityJoin';
+import FounderSection from './components/FounderSection';
+import Events from './components/Events/Events';
+import Navigation from './components/Navigation/Navigation';
+import ScrollTopButton from './components/ScrollTopButton';
+import { VideoLibrary } from './components/video-library/VideoLibrary';
 
 // Toast notification component for system messages
 function Toast({ message, type, onClose }) {
@@ -84,7 +82,9 @@ function AppContent() {
   const scrollPosition = useScrollPosition();
   const { width } = useWindowSize();
   const [isLoading, setIsLoading] = useState(true);
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [currentPath, setCurrentPath] = useState(
+    window.location.pathname.replace('/dancingdragons', '') || '/'
+  );
   const [toasts, setToasts] = useState([]);
 
   // Toast management
@@ -128,15 +128,18 @@ function AppContent() {
 
   // Handle path changes
   const handleNavigate = (path) => {
+    const basePath = '/dancingdragons';
+    const fullPath = `${basePath}${path}`;
     setCurrentPath(path);
-    window.history.pushState({}, '', path);
+    window.history.pushState({}, '', fullPath);
     window.scrollTo(0, 0);
   };
 
   // Listen for popstate events (browser back/forward)
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname);
+      const newPath = window.location.pathname.replace('/dancingdragons', '') || '/';
+      setCurrentPath(newPath);
       window.scrollTo(0, 0);
     };
 
@@ -228,9 +231,11 @@ function AppContent() {
 
 function App() {
   return (
-    <EventProvider>
-      <AppContent />
-    </EventProvider>
+    <AppProvider>
+      <EventProvider>
+        <AppContent />
+      </EventProvider>
+    </AppProvider>
   );
 }
 

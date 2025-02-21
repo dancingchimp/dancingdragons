@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Dancing Dragons - A women's adventure & wellness community focused on authentic connections, growth, and shared experiences">
-    <meta name="theme-color" content="#2d3436">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    
+    <!-- Mobile-specific meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dancing Dragons">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a202c">
     <meta name="color-scheme" content="dark">
     
     <!-- SEO Meta Tags -->
+    <meta name="description" content="Dancing Dragons - A women's adventure & wellness community focused on authentic connections, growth, and shared experiences">
     <meta name="keywords" content="women's community, adventure, wellness, dance, hiking, meditation, travel, dancing dragons">
     <meta name="author" content="Dancing Dragons">
-    <meta property="og:title" content="Dancing Dragons | Women's Adventure Community">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Dancing Dragons | Adventure Community">
     <meta property="og:description" content="Join a community of women exploring life's greatest adventures. Hiking, dancing, wellness, and authentic connections.">
     <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg">
     <meta property="og:url" content="https://dancingchimp.github.io/dancingdragons/">
@@ -24,8 +32,6 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="mask-icon" href="%PUBLIC_URL%/favicon/safari-pinned-tab.svg" color="#e17055">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="msapplication-TileColor" content="#2d3436">
-    <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml">
     
     <!-- Preconnect to CDNs -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -34,9 +40,6 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
     <style>
         /* Critical path CSS */
@@ -72,28 +75,37 @@
             -moz-osx-font-smoothing: grayscale;
             background-color: var(--color-gray-900);
             color: white;
+            /* Add padding for iOS safe areas */
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
         
         #root {
             min-height: 100vh;
         }
         
-        .text-orange-500 {
-            color: var(--color-orange-500);
-        }
-        
-        .text-4xl {
-            font-size: 2.25rem;
-        }
-        
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-        
-        .text-center {
-            text-align: center;
+        /* iOS status bar spacing */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+            }
         }
     </style>
+    <!-- Add this script to index.html before </head> -->
+<script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
 </head>
 <body>
     <noscript>
