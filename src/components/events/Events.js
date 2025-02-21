@@ -44,8 +44,6 @@ function Events() {
               </div>
             </div>
           )}
-
-          {/* Events list will be mapped here when implemented */}
         </div>
       </div>
 
