@@ -1,15 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useAppContext } from './context/AppContext';
-import { useScrollPosition, useWindowSize } from './hooks/useUtils';
+// File: src/components/Navigation.js
 
-// Import components
-import Hero from './components/Hero';
-import Activities from './components/Activities';
-import Community from './components/Community';
-import FounderSection from './components/FounderSection';
-import VideoLibrary from './components/video-library/VideoLibrary';
+import React from 'react';
 
-// Navigation component
 function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate }) {
   return (
     <nav className="fixed w-full z-50 bg-gray-900/95 backdrop-blur shadow-lg">
@@ -41,13 +33,15 @@ function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate
               Community
             </button>
             <button 
-              onClick={() => onNavigate('/library')}
+              onClick={() => onNavigate('/join')}
               className={`bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full 
                          transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg
-                         flex items-center gap-2`}
+                         flex items-center gap-2 ${
+                           currentPath === '/join' ? 'bg-orange-600' : ''
+                         }`}
             >
-              <i className="fas fa-play-circle"></i>
-              Library
+              <i className="fas fa-user-plus"></i>
+              Join Us
             </button>
           </div>
 
@@ -88,15 +82,15 @@ function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate
           </button>
           <button 
             onClick={() => {
-              onNavigate('/library');
+              onNavigate('/join');
               closeMenu();
             }}
             className="text-xl bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full 
                       transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg
                       flex items-center gap-2 justify-center"
           >
-            <i className="fas fa-play-circle"></i>
-            Library
+            <i className="fas fa-user-plus"></i>
+            Join Us
           </button>
         </div>
       </div>
@@ -104,113 +98,4 @@ function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate
   );
 }
 
-// ScrollTopButton component
-function ScrollTopButton({ onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className="bg-orange-500 hover:bg-orange-600 p-3 rounded-full shadow-lg 
-                 transition-all transform hover:scale-110 text-white"
-      aria-label="Scroll to top"
-    >
-      <i className="fas fa-arrow-up"></i>
-    </button>
-  );
-}
-
-function App() {
-  const { isMenuOpen, toggleMenu, closeMenu } = useAppContext();
-  const scrollPosition = useScrollPosition();
-  const { width } = useWindowSize();
-  const [isLoading, setIsLoading] = useState(true);
-  const [currentPath, setCurrentPath] = useState('/');
-
-  useEffect(() => {
-    // Simulate loading state
-    const timer = setTimeout(() => setIsLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (width >= 768 && isMenuOpen) {
-      closeMenu();
-    }
-  }, [width, isMenuOpen, closeMenu]);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-center opacity-100 transform transition-all duration-500">
-          <i className="fas fa-dragon text-orange-500 text-5xl mb-4 float"></i>
-          <p className="text-white text-xl">Loading Dancing Dragons...</p>
-        </div>
-      </div>
-    );
-  }
-
-  const renderContent = () => {
-    switch (currentPath) {
-      case '/activities':
-        return <Activities fullPage={true} />;
-      case '/community':
-        return <Community />;
-      case '/library':
-        return <VideoLibrary />;
-      default:
-        return (
-          <>
-            <Hero />
-            <Activities />
-            <FounderSection />
-            <VideoLibrary />
-          </>
-        );
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation 
-        isMenuOpen={isMenuOpen} 
-        toggleMenu={toggleMenu}
-        closeMenu={closeMenu}
-        currentPath={currentPath}
-        onNavigate={setCurrentPath}
-      />
-      
-      <main className={`relative transition-all duration-300 ${isMenuOpen ? 'blur-sm' : ''}`}>
-        <div className="transition-opacity duration-300 ease-in-out">
-          {renderContent()}
-        </div>
-      </main>
-      
-      <div className={`fixed bottom-8 right-8 transition-all duration-300 transform
-        ${scrollPosition > 400 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      >
-        {scrollPosition > 400 && (
-          <ScrollTopButton onClick={scrollToTop} />
-        )}
-      </div>
-    </div>
-  );
-}
-
-export default App;
+export default Navigation;
