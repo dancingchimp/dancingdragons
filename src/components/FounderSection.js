@@ -85,7 +85,7 @@ function FounderSection() {
       description: "Exploring states of awareness"
     },
     {
-      icon: "fa-hands-holding-circle",
+      icon: "fa-people-group",
       title: "Community Building",
       description: "Creating spaces for growth and connection"
     }
@@ -99,7 +99,7 @@ function FounderSection() {
   ];
 
   return (
-    <section className="py-32 bg-gray-900 text-white px-4">
+    <section className="py-32 bg-[#1a202c] text-white px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-8 text-orange-300">Our Story</h2>
