@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useAppContext } from './context/AppContext';
 import { useScrollPosition, useWindowSize } from './hooks/useUtils';
 
+// Import components
+import Hero from './components/Hero';
+import Activities from './components/Activities';
+import Community from './components/Community';
+import FounderSection from './components/FounderSection';
+import { VideoLibrary } from './components/video-library/VideoLibrary';
+
 // Navigation component
 function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate }) {
   return (
@@ -32,6 +39,17 @@ function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate
               }`}
             >
               Community
+            </button>
+            <button 
+              onClick={() => onNavigate('/library')}
+              className={`bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full 
+                         transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg
+                         flex items-center gap-2 ${
+                           currentPath === '/library' ? 'bg-orange-600' : ''
+                         }`}
+            >
+              <i className="fas fa-play-circle"></i>
+              Library
             </button>
           </div>
 
@@ -69,6 +87,18 @@ function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate
             className="text-xl text-white hover:text-orange-500 transition-colors"
           >
             Community
+          </button>
+          <button 
+            onClick={() => {
+              onNavigate('/library');
+              closeMenu();
+            }}
+            className="text-xl bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full 
+                      transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg
+                      flex items-center gap-2 justify-center"
+          >
+            <i className="fas fa-play-circle"></i>
+            Library
           </button>
         </div>
       </div>
@@ -130,7 +160,7 @@ function App() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-center transform scale-100 opacity-100 transition-all duration-500">
+        <div className="text-center opacity-100 transform transition-all duration-500">
           <i className="fas fa-dragon text-orange-500 text-5xl mb-4 float"></i>
           <p className="text-white text-xl">Loading Dancing Dragons...</p>
         </div>
@@ -144,6 +174,12 @@ function App() {
         return <Activities fullPage={true} />;
       case '/community':
         return <Community />;
+      case '/library':
+        return (
+          <div className="pt-16">
+            <VideoLibrary fullPage={true} />
+          </div>
+        );
       default:
         return (
           <>
