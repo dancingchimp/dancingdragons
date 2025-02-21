@@ -1,20 +1,107 @@
-import React, { useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { useAppContext } from './context/AppContext';
 import { useScrollPosition, useWindowSize } from './hooks/useUtils';
 
-// Components
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import Activities from './components/Activities';
-import Community from './components/Community';
-import FounderSection from './components/FounderSection';
-import ScrollTopButton from './components/ScrollTopButton';
+// Navigation component
+function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate }) {
+  return (
+    <nav className="fixed w-full z-50 bg-gray-900/95 backdrop-blur shadow-lg">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <button 
+            onClick={() => onNavigate('/')} 
+            className="flex items-center"
+          >
+            <i className="fas fa-dragon text-orange-500 text-2xl mr-2"></i>
+            <span className="text-white text-xl font-bold">Dancing Dragons</span>
+          </button>
+
+          <div className="hidden md:flex items-center space-x-8">
+            <button 
+              onClick={() => onNavigate('/activities')}
+              className={`text-white hover:text-orange-500 transition-colors ${
+                currentPath === '/activities' ? 'text-orange-500' : ''
+              }`}
+            >
+              Activities
+            </button>
+            <button 
+              onClick={() => onNavigate('/community')}
+              className={`text-white hover:text-orange-500 transition-colors ${
+                currentPath === '/community' ? 'text-orange-500' : ''
+              }`}
+            >
+              Community
+            </button>
+          </div>
+
+          <button
+            className="md:hidden p-2 text-white hover:text-orange-500 transition-colors"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} transition-transform duration-300`}></i>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div className={`
+        fixed inset-0 bg-gray-900/95 backdrop-blur-lg transition-all duration-300 ease-in-out
+        ${isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'}
+        md:hidden pt-16
+      `}>
+        <div className="flex flex-col items-center space-y-8 p-8">
+          <button 
+            onClick={() => {
+              onNavigate('/activities');
+              closeMenu();
+            }}
+            className="text-xl text-white hover:text-orange-500 transition-colors"
+          >
+            Activities
+          </button>
+          <button 
+            onClick={() => {
+              onNavigate('/community');
+              closeMenu();
+            }}
+            className="text-xl text-white hover:text-orange-500 transition-colors"
+          >
+            Community
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+// ScrollTopButton component
+function ScrollTopButton({ onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="bg-orange-500 hover:bg-orange-600 p-3 rounded-full shadow-lg 
+                 transition-all transform hover:scale-110 text-white"
+      aria-label="Scroll to top"
+    >
+      <i className="fas fa-arrow-up"></i>
+    </button>
+  );
+}
 
 function App() {
   const { isMenuOpen, toggleMenu, closeMenu } = useAppContext();
   const scrollPosition = useScrollPosition();
   const { width } = useWindowSize();
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentPath, setCurrentPath] = useState('/');
+
+  useEffect(() => {
+    // Simulate loading state
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (width >= 768 && isMenuOpen) {
@@ -40,34 +127,58 @@ function App() {
     });
   };
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-center transform scale-100 opacity-100 transition-all duration-500">
+          <i className="fas fa-dragon text-orange-500 text-5xl mb-4 float"></i>
+          <p className="text-white text-xl">Loading Dancing Dragons...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const renderContent = () => {
+    switch (currentPath) {
+      case '/activities':
+        return <Activities fullPage={true} />;
+      case '/community':
+        return <Community />;
+      default:
+        return (
+          <>
+            <Hero />
+            <Activities />
+            <FounderSection />
+          </>
+        );
+    }
+  };
+
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-900 text-white">
-        <Navigation 
-          isMenuOpen={isMenuOpen} 
-          toggleMenu={toggleMenu}
-          closeMenu={closeMenu}
-        />
-        
-        <main className={`relative ${isMenuOpen ? 'blur-sm' : ''}`}>
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Hero />
-                <Activities />
-                <FounderSection />
-              </>
-            } />
-            <Route path="activities" element={<Activities fullPage={true} />} />
-            <Route path="community" element={<Community />} />
-          </Routes>
-        </main>
-        
+    <div className="min-h-screen bg-gray-900 text-white">
+      <Navigation 
+        isMenuOpen={isMenuOpen} 
+        toggleMenu={toggleMenu}
+        closeMenu={closeMenu}
+        currentPath={currentPath}
+        onNavigate={setCurrentPath}
+      />
+      
+      <main className={`relative transition-all duration-300 ${isMenuOpen ? 'blur-sm' : ''}`}>
+        <div className="transition-opacity duration-300 ease-in-out">
+          {renderContent()}
+        </div>
+      </main>
+      
+      <div className={`fixed bottom-8 right-8 transition-all duration-300 transform
+        ${scrollPosition > 400 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      >
         {scrollPosition > 400 && (
           <ScrollTopButton onClick={scrollToTop} />
         )}
       </div>
-    </Router>
+    </div>
   );
 }
 
