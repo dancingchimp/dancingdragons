@@ -1,17 +1,16 @@
 // File: src/components/Navigation/Navigation.js
 
 import React, { useState } from 'react';
-import { useAppContext } from '../../context/AppContext';
 import { SignalContactModal } from '../system/SignalContactModal';
 
-function Navigation({ currentPath, onNavigate }) {
-  const { isMenuOpen, toggleMenu, closeMenu } = useAppContext();
+function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate }) {
   const [isSignalModalOpen, setIsSignalModalOpen] = useState(false);
 
   const NAV_ITEMS = [
     { name: 'Home', path: '/' },
     { name: 'Activities', path: '/activities' },
-    { name: 'Community', path: '/community' }
+    { name: 'Community', path: '/community' },
+    { name: 'Events', path: '/events' }
   ];
 
   const handleNavClick = (path) => {
@@ -19,14 +18,11 @@ function Navigation({ currentPath, onNavigate }) {
     closeMenu();
   };
 
-  const handleJoinClick = () => {
-    setIsSignalModalOpen(true);
-    closeMenu();
-  };
-
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
+        {/* Safe area padding for iOS */}
+        <div className="w-full h-[env(safe-area-inset-top)]" />
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -54,7 +50,7 @@ function Navigation({ currentPath, onNavigate }) {
               ))}
               
               <button
-                onClick={handleJoinClick}
+                onClick={() => setIsSignalModalOpen(true)}
                 className="bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-full 
                          text-white font-semibold transition-all duration-300 
                          hover:-translate-y-1"
@@ -97,7 +93,10 @@ function Navigation({ currentPath, onNavigate }) {
             ))}
             
             <button
-              onClick={handleJoinClick}
+              onClick={() => {
+                setIsSignalModalOpen(true);
+                closeMenu();
+              }}
               className="w-full bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg
                        text-white font-semibold transition-colors"
             >
@@ -106,6 +105,9 @@ function Navigation({ currentPath, onNavigate }) {
           </div>
         </div>
       </nav>
+
+      {/* Add spacer to prevent content from going under fixed nav */}
+      <div className="h-[calc(64px+env(safe-area-inset-top))]" />
 
       <SignalContactModal 
         isOpen={isSignalModalOpen}
