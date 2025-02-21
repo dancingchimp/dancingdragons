@@ -1,0 +1,34 @@
+{
+  "short_name": "Dancing Dragons",
+  "name": "Dancing Dragons | Adventure Community",
+  "description": "A women's adventure & wellness community focused on authentic connections",
+  "icons": [
+    {
+      "src": "/dancingdragons/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/dancingdragons/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/dancingdragons/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/dancingdragons/",
+  "scope": "/dancingdragons/",
+  "display": "standalone",
+  "theme_color": "#2d3436",
+  "background_color": "#1a202c",
+  "orientation": "portrait",
+  "categories": ["community", "lifestyle", "health", "travel", "social"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
