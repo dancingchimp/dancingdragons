@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dancingdragons/static/css/main.bacad490.css",
-    "main.js": "/dancingdragons/static/js/main.7e12b3d8.js",
+    "main.css": "/dancingdragons/static/css/main.8010c33a.css",
+    "main.js": "/dancingdragons/static/js/main.3b1951e9.js",
     "static/js/488.fb990c84.chunk.js": "/dancingdragons/static/js/488.fb990c84.chunk.js",
     "index.html": "/dancingdragons/index.html",
-    "main.bacad490.css.map": "/dancingdragons/static/css/main.bacad490.css.map",
-    "main.7e12b3d8.js.map": "/dancingdragons/static/js/main.7e12b3d8.js.map",
+    "main.8010c33a.css.map": "/dancingdragons/static/css/main.8010c33a.css.map",
+    "main.3b1951e9.js.map": "/dancingdragons/static/js/main.3b1951e9.js.map",
     "488.fb990c84.chunk.js.map": "/dancingdragons/static/js/488.fb990c84.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bacad490.css",
-    "static/js/main.7e12b3d8.js"
+    "static/css/main.8010c33a.css",
+    "static/js/main.3b1951e9.js"
   ]
 }
