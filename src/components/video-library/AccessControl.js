@@ -17,8 +17,8 @@ export function AccessControl({ onAccess }) {
     }
   };
 
-  const BITCOIN_ADDRESS = "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-  const ETHEREUM_ADDRESS = "0x71C7656EC7ab88b098defB751B7401B5f6d8976F";
+  const BITCOIN_ADDRESS = "DEMO_BTC_ADDRESS_COMING_SOON";
+  const ETHEREUM_ADDRESS = "DEMO_ETH_ADDRESS_COMING_SOON";
 
   return (
     <div className="max-w-md mx-auto bg-gray-800/50 rounded-xl p-8">
