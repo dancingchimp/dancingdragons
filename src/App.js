@@ -1,9 +1,8 @@
 // src/App.js
 
 import React, { useState, Suspense } from 'react';
-import { AppProvider, useAppContext } from './context/AppContext';
+import { AppProvider } from './context/AppContext';
 import { EventProvider } from './context/EventContext';
-import { useMediaQuery } from './hooks/useUtils';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -16,55 +15,48 @@ const Navigation = React.lazy(() => import('./components/Navigation/Navigation')
 
 // Simple loading component
 const PageLoader = () => (
-  <div className="bg-gray-900 min-h-screen flex items-center justify-center">
+  <div className="flex items-center justify-center h-screen">
     <i className="fas fa-dragon text-orange-500 text-5xl" />
   </div>
 );
 
 function AppContent() {
-  const { isMenuOpen, toggleMenu, closeMenu } = useAppContext();
-  const isMobile = useMediaQuery('(max-width: 768px)');
   const [currentPath, setCurrentPath] = useState('/');
 
   const handleNavigate = (path) => {
     setCurrentPath(path);
     window.scrollTo(0, 0);
-    closeMenu();
   };
 
-  // Simplified content rendering
   const renderContent = () => {
-    const routes = {
-      '/': (
-        <>
-          <Hero />
-          <Activities />
-          <FounderSection />
-        </>
-      ),
-      '/activities': <Activities fullPage={true} />,
-      '/community': <Community />,
-      '/events': <Events />,
-      '/join': <CommunityJoin />
-    };
-
-    return routes[currentPath] || routes['/'];
+    switch(currentPath) {
+      case '/activities':
+        return <Activities fullPage={true} />;
+      case '/community':
+        return <Community />;
+      case '/events':
+        return <Events />;
+      case '/join':
+        return <CommunityJoin />;
+      default:
+        return (
+          <>
+            <Hero />
+            <Activities />
+            <FounderSection />
+          </>
+        );
+    }
   };
 
   return (
-    <div className="bg-gray-900">
-      <Suspense fallback={<PageLoader />}>
-        <Navigation 
-          isMenuOpen={isMenuOpen} 
-          toggleMenu={toggleMenu}
-          closeMenu={closeMenu}
-          currentPath={currentPath}
-          onNavigate={handleNavigate}
-          isMobile={isMobile}
-        />
-        {renderContent()}
-      </Suspense>
-    </div>
+    <>
+      <Navigation 
+        currentPath={currentPath}
+        onNavigate={handleNavigate}
+      />
+      {renderContent()}
+    </>
   );
 }
 
@@ -72,7 +64,9 @@ function App() {
   return (
     <AppProvider>
       <EventProvider>
-        <AppContent />
+        <Suspense fallback={<PageLoader />}>
+          <AppContent />
+        </Suspense>
       </EventProvider>
     </AppProvider>
   );

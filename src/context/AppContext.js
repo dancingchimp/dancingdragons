@@ -1,24 +1,15 @@
-// File: src/context/AppContext.js
+// src/context/AppContext.js
 
 import React, { createContext, useContext, useState } from 'react';
 
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   const value = {
-    isMenuOpen,
-    toggleMenu,
-    closeMenu
+    isLoading,
+    setIsLoading,
   };
 
   return (

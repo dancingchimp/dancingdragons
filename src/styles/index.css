@@ -1,89 +1,36 @@
+/* src/styles/index.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Base setup */
-:root {
-  --vh: 1vh;
-  --app-header-height: 3rem;
-}
-
-/* Reset and base styles */
-html, body {
-  @apply bg-gray-900;
+/* Reset any problematic defaults */
+body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
+  background-color: #1a202c;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Ensure proper sizing */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Remove any unwanted overflow */
+#root {
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
-body {
-  @apply text-white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-#root {
-  min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
-}
-
-/* Mobile-specific adjustments */
-@media (max-width: 767px) {
-  .mobile-header {
-    height: var(--app-header-height);
-  }
-
-  .mobile-content {
-    padding-top: var(--app-header-height);
-  }
-}
-
-/* Animation utilities */
-.float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Accessibility */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Custom scrollbar */
-@layer utilities {
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #4a5568 #1a202c;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: #1a202c;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #4a5568;
-    border-radius: 3px;
-  }
+/* Basic animation for loading state */
+.loading {
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }

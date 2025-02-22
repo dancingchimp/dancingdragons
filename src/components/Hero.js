@@ -6,7 +6,7 @@ function Hero() {
   const GITBOOK_LINK = "https://dancingchimp.gitbook.io/dancingdragons/";
   
   return (
-    <div className="px-4 py-8 bg-gray-900">
+    <div className="px-4 pt-16 pb-12">
       <div className="max-w-md mx-auto text-center">
         <h1 className="mb-8">
           <div className="text-5xl font-bold text-orange-500">Discover</div>
@@ -22,7 +22,7 @@ function Hero() {
         <div className="space-y-4">
           <button 
             onClick={() => setIsSignalModalOpen(true)}
-            className="w-full bg-orange-500 text-white rounded-full py-4 text-lg font-semibold"
+            className="w-full bg-orange-500 text-white rounded-lg py-4 text-lg font-semibold"
           >
             Join Our Community
           </button>
@@ -31,8 +31,8 @@ function Hero() {
             href={GITBOOK_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-block border border-gray-700 text-white rounded-full 
-                     py-4 text-lg font-semibold"
+            className="w-full inline-block border border-gray-700 text-white 
+                     rounded-lg py-4 text-lg font-semibold"
           >
             Learn More
           </a>
