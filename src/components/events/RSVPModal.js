@@ -1,145 +1,61 @@
 // src/components/events/RSVPModal.js
-import React, { useState } from 'react';
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal } from '../system/Modal';
-import { Card, CardContent } from '../ui/Card';
-import { generateTemporaryToken } from '../../utils/crypto';
 
-function RSVPForm({ event, onSubmit }) {
-  const [formData, setFormData] = useState({
-    token: generateTemporaryToken(), // Generate anonymous participant token
-    requirements: false,
-    notes: ''
-  });
+/**
+ * TODO: Phase 2 - RSVP System Implementation
+ * 
+ * Core Features:
+ * - Anonymous participation tokens
+ * - Waitlist management
+ * - Capacity tracking
+ * - Signal group integration
+ * - Requirements confirmation
+ * 
+ * Privacy Features:
+ * - Zero personal data storage
+ * - Temporary access tokens
+ * - Encrypted participant lists
+ * - Auto-deletion after events
+ * 
+ * Future Enhancements:
+ * - Equipment verification
+ * - Experience level validation
+ * - Emergency contact system (encrypted)
+ * - Weather advisory acknowledgment
+ * - Cancellation management
+ * - Buddy system matching
+ */
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-  };
-
-  return (
-    <div className="space-y-6">
-      {/* Event Summary */}
-      <Card>
-        <CardContent>
-          <div className="flex items-start gap-4">
-            <div className="bg-gray-800 p-3 rounded-lg text-orange-500">
-              <i className={`fas ${
-                event.type === 'adventure' ? 'fa-mountain' :
-                event.type === 'movement' ? 'fa-music' : 'fa-om'
-              } text-xl`}></i>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white">{event.title}</h3>
-              <p className="text-sm text-gray-400">
-                {new Date(event.date).toLocaleDateString('en-US', {
-                  weekday: 'long',
-                  month: 'long',
-                  day: 'numeric'
-                })} at {event.time}
-              </p>
-              {event.spotsLeft > 0 ? (
-                <p className="text-sm text-green-500 mt-1">
-                  {event.spotsLeft} spots remaining
-                </p>
-              ) : (
-                <p className="text-sm text-yellow-500 mt-1">
-                  Waitlist available
-                </p>
-              )}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Requirements Confirmation */}
-        {event.requirements && (
-          <div className="space-y-2">
-            <h4 className="font-medium text-white">Requirements</h4>
-            <p className="text-sm text-gray-400">{event.requirements}</p>
-            <label className="flex items-start gap-2 mt-2">
-              <input
-                type="checkbox"
-                required
-                checked={formData.requirements}
-                onChange={(e) => setFormData({ ...formData, requirements: e.target.checked })}
-                className="mt-1 rounded border-gray-700 bg-gray-800 text-orange-500 
-                         focus:ring-orange-500 focus:ring-offset-gray-900"
-              />
-              <span className="text-sm text-gray-300">
-                I confirm that I meet all the requirements for this event
-              </span>
-            </label>
-          </div>
-        )}
-
-        {/* Notes */}
-        <div className="space-y-2">
-          <label className="block">
-            <span className="text-gray-300 text-sm">Notes (optional)</span>
-            <textarea
-              value={formData.notes}
-              onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              className="mt-1 w-full px-4 py-2 bg-gray-800 rounded-lg text-white 
-                       placeholder-gray-400 border border-gray-700 
-                       focus:outline-none focus:border-orange-500"
-              rows="3"
-              placeholder="Any additional information you'd like to share"
-            />
-          </label>
-        </div>
-
-        {/* Privacy Notice */}
-        <div className="text-sm text-gray-400">
-          <p className="flex items-center gap-2">
-            <i className="fas fa-shield-alt"></i>
-            Your privacy is protected:
-          </p>
-          <ul className="mt-2 space-y-1 pl-6 list-disc">
-            <li>No personal information is stored</li>
-            <li>Anonymous participation token provided</li>
-            <li>Event details shared via Signal</li>
-            <li>Automatic data deletion after event</li>
-          </ul>
-        </div>
-
-        {/* Submit Buttons */}
-        <div className="flex gap-4 justify-end pt-4">
-          <button
-            type="submit"
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg 
-                     transition-colors flex items-center gap-2"
-          >
-            <i className="fas fa-check"></i>
-            {event.spotsLeft > 0 ? 'Confirm RSVP' : 'Join Waitlist'}
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-export function RSVPModal({ isOpen, onClose, event, onRSVP }) {
-  const handleSubmit = (formData) => {
-    onRSVP({
-      eventId: event.id,
-      ...formData,
-      timestamp: new Date().toISOString(),
-      status: event.spotsLeft > 0 ? 'confirmed' : 'waitlist'
-    });
-    onClose();
-  };
-
+export function RSVPModal({ isOpen, onClose }) {
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={event.spotsLeft > 0 ? 'RSVP to Event' : 'Join Event Waitlist'}
+      title="Event RSVP"
       size="md"
     >
-      <RSVPForm event={event} onSubmit={handleSubmit} />
+      <div className="space-y-6">
+        <div className="bg-gray-800/50 rounded-xl p-6">
+          <i className="fas fa-calendar-check text-orange-500 text-3xl mb-4 block"></i>
+          <h3 className="text-xl font-semibold text-orange-300 mb-2">
+            RSVP System Coming Soon
+          </h3>
+          <p className="text-gray-300">
+            Our privacy-focused RSVP system is under development. For now, please join
+            our Signal group to participate in events.
+          </p>
+        </div>
+      </div>
     </Modal>
   );
 }
+
+RSVPModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 export default RSVPModal;
