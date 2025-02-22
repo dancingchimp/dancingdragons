@@ -1,7 +1,26 @@
 // src/components/events/CreateEventModal.js
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal } from '../system/Modal';
 import { Card, CardContent } from '../ui/Card';
+
+/**
+ * TODO: Phase 2 - Event Creation Implementation
+ * 
+ * Features to implement:
+ * - Event type selection (adventure, movement, inner work)
+ * - Date and time picker
+ * - Location selection with privacy controls
+ * - Capacity setting
+ * - Requirements checklist
+ * - Weather advisory integration
+ * - Signal group creation
+ * 
+ * Privacy considerations:
+ * - No personal data storage
+ * - Secure location sharing
+ * - Temporary tokens for attendance
+ */
 
 export function CreateEventModal({ isOpen, onClose }) {
   return (
@@ -40,5 +59,10 @@ export function CreateEventModal({ isOpen, onClose }) {
     </Modal>
   );
 }
+
+CreateEventModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 export default CreateEventModal;
