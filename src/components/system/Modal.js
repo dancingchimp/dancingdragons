@@ -1,10 +1,8 @@
 // File: src/components/system/Modal.js
 
 import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 
 export function Modal({ isOpen, onClose, title, children, size = 'md' }) {
-  // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -25,8 +23,8 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }) {
     xl: 'max-w-4xl'
   };
 
-  return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-[env(safe-area-inset-top)]">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -52,7 +50,6 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }) {
           {children}
         </div>
       </div>
-    </div>,
-    document.body
+    </div>
   );
 }
