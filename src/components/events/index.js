@@ -1,7 +1,7 @@
 // src/components/events/index.js
 
 import React, { Suspense, lazy } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '../ui/Card';
 
 // Lazy load components for better performance
 const CreateEventModal = lazy(() => import('./CreateEventModal'));

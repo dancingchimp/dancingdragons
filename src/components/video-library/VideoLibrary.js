@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { VIDEO_CONTENT, CATEGORIES } from '../../utils/video/videoConfig';
 import { decryptStorageKey, validateAccessKey } from '../../utils/video/encryption';
 import { VideoCard } from './VideoCard';
-import { AccessControl } from './AccessControl';
 import { VideoPlayer } from './VideoPlayer';
+import { AccessControl } from './AccessControl';
 
-export function VideoLibrary({ fullPage = false }) {
+function VideoLibrary({ fullPage = false }) {
   const [isAccessGranted, setIsAccessGranted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -150,3 +150,6 @@ export function VideoLibrary({ fullPage = false }) {
     </section>
   );
 }
+
+export { VideoLibrary };
+export default VideoLibrary;

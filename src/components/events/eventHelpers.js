@@ -98,5 +98,15 @@ export const formatDuration = (minutes) => {
 
 // Check if event needs weather advisory
 export const needsWeatherAdvisory = (event) => {
-  return ['adventure', 'movement'].includes(event.type) && 
-         event.location.terrain !== 'Urban';
+  if (!event || !event.type) {
+    return false
+  }
+  
+  // Only check weather advisory for outdoor events
+  return (
+    ['adventure', 'movement'].includes(event.type) && 
+    event.location && 
+    event.location.terrain && 
+    event.location.terrain !== 'Urban'
+  )
+}
