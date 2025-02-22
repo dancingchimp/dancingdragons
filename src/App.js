@@ -18,7 +18,7 @@ const VideoLibrary = lazy(() => import('./components/video-library/VideoLibrary'
 
 // Loading components
 const PageLoader = () => (
-  <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+  <div className="fixed inset-0 bg-gray-900 flex items-center justify-center">
     <div className="text-center">
       <i className="fas fa-dragon text-orange-500 text-5xl mb-4 float"></i>
       <div className="flex items-center gap-3">
@@ -47,18 +47,18 @@ class AppErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gray-900 flex items-center justify-center text-white p-4">
-          <div className="max-w-lg w-full bg-gray-800 rounded-lg p-8 shadow-xl">
+        <div className="fixed inset-0 bg-gray-900 flex items-center justify-center p-4">
+          <div className="max-w-lg w-full bg-gray-800/50 rounded-xl p-8">
             <h1 className="text-3xl font-bold mb-4 text-orange-500">
               <i className="fas fa-exclamation-triangle mr-2"></i>
               Something went wrong
             </h1>
-            <p className="mb-4">We're sorry - something has gone wrong with the Dancing Dragons app.</p>
+            <p className="mb-4 text-white">We're sorry - something has gone wrong with the Dancing Dragons app.</p>
             <div className="space-y-4">
               <button 
                 onClick={() => window.location.reload()}
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 
-                         rounded-lg transition-colors flex items-center justify-center gap-2"
+                         rounded-xl transition-colors flex items-center justify-center gap-2"
               >
                 <i className="fas fa-sync-alt"></i>
                 Reload App
@@ -66,7 +66,7 @@ class AppErrorBoundary extends React.Component {
               <button 
                 onClick={() => this.setState({ hasError: false })}
                 className="w-full border border-orange-500 text-orange-500 px-6 py-3 
-                         rounded-lg hover:bg-orange-500/10 transition-colors"
+                         rounded-xl hover:bg-orange-500/10 transition-colors"
               >
                 Try Again
               </button>
@@ -90,23 +90,28 @@ function AppContent() {
     return path || '/';
   });
 
-  // Load essential resources and handle initialization
+  // Mobile viewport height fix
+  useEffect(() => {
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    setViewportHeight();
+    window.addEventListener('resize', setViewportHeight);
+    window.addEventListener('orientationchange', setViewportHeight);
+
+    return () => {
+      window.removeEventListener('resize', setViewportHeight);
+      window.removeEventListener('orientationchange', setViewportHeight);
+    };
+  }, []);
+
+  // Load essential resources
   useEffect(() => {
     const loadResources = async () => {
       try {
-        // Add a small minimum delay to prevent flash
         await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Initialize performance monitoring if enabled
-        if (process.env.REACT_APP_PERFORMANCE_MONITORING === 'true') {
-          const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('web-vitals');
-          getCLS(console.log);
-          getFID(console.log);
-          getFCP(console.log);
-          getLCP(console.log);
-          getTTFB(console.log);
-        }
-
         setIsLoading(false);
       } catch (error) {
         console.error('Error loading resources:', error);
@@ -117,16 +122,17 @@ function AppContent() {
     loadResources();
   }, []);
 
-  // Handle path changes
+  // Handle navigation
   const handleNavigate = (path) => {
     const basePath = '/dancingdragons';
     const fullPath = `${basePath}${path}`;
     setCurrentPath(path);
     window.history.pushState({}, '', fullPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu(); // Close menu on navigation
   };
 
-  // Listen for popstate events (browser back/forward)
+  // Handle back/forward navigation
   useEffect(() => {
     const handlePopState = () => {
       const newPath = window.location.pathname.replace('/dancingdragons', '') || '/';
@@ -138,25 +144,18 @@ function AppContent() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Handle menu state
+  // Close menu on desktop
   useEffect(() => {
     if (width >= 768 && isMenuOpen) {
       closeMenu();
     }
   }, [width, isMenuOpen, closeMenu]);
 
-  // Handle body scroll lock when menu is open
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
-
   if (isLoading) {
     return <PageLoader />;
   }
 
+  // Render current route content
   const renderContent = () => {
     const components = {
       '/activities': <Activities fullPage={true} />,
@@ -187,7 +186,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="relative bg-gray-900">
       <Suspense fallback={<PageLoader />}>
         <Navigation 
           isMenuOpen={isMenuOpen} 
@@ -198,21 +197,14 @@ function AppContent() {
         />
       </Suspense>
       
-      <main className={`relative transition-all duration-300 ${isMenuOpen ? 'blur-sm' : ''}`}>
-        <div className="transition-opacity duration-300 ease-in-out">
-          {renderContent()}
-        </div>
+      <main>
+        {renderContent()}
       </main>
       
       {scrollPosition > 400 && (
         <Suspense fallback={null}>
           <ScrollTopButton onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
         </Suspense>
-      )}
-
-      {/* Performance monitoring beacon */}
-      {process.env.NODE_ENV === 'production' && (
-        <div id="performance-beacon" style={{ display: 'none' }} />
       )}
     </div>
   );
