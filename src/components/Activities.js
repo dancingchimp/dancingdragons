@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function ActivityCard({ title, icon, items }) {
   return (
@@ -20,6 +21,12 @@ function ActivityCard({ title, icon, items }) {
     </div>
   );
 }
+
+ActivityCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.string).isRequired
+};
 
 function Activities({ fullPage = false }) {
   const activities = [
@@ -84,5 +91,9 @@ function Activities({ fullPage = false }) {
     </section>
   );
 }
+
+Activities.propTypes = {
+  fullPage: PropTypes.bool
+};
 
 export default Activities;

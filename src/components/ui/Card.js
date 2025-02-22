@@ -1,5 +1,6 @@
 // src/components/ui/Card.js
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export function Card({ className = '', children, ...props }) {
   return (
@@ -12,6 +13,11 @@ export function Card({ className = '', children, ...props }) {
   );
 }
 
+Card.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
+
 export function CardHeader({ className = '', children, ...props }) {
   return (
     <div className={`p-6 ${className}`} {...props}>
@@ -19,6 +25,11 @@ export function CardHeader({ className = '', children, ...props }) {
     </div>
   );
 }
+
+CardHeader.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
 
 export function CardTitle({ className = '', children, ...props }) {
   return (
@@ -28,6 +39,11 @@ export function CardTitle({ className = '', children, ...props }) {
   );
 }
 
+CardTitle.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
+
 export function CardContent({ className = '', children, ...props }) {
   return (
     <div className={`p-6 pt-0 ${className}`} {...props}>
@@ -35,5 +51,10 @@ export function CardContent({ className = '', children, ...props }) {
     </div>
   );
 }
+
+CardContent.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
 
 export default Card;

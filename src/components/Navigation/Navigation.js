@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react';
+// src/components/Navigation/Navigation.js
+
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { SignalContactModal } from '../system/SignalContactModal';
 
 function Navigation({ currentPath, onNavigate }) {
   const [showMenu, setShowMenu] = useState(false);
   const [isSignalModalOpen, setIsSignalModalOpen] = useState(false);
-
-  // Lock body scroll when menu is open
-  useEffect(() => {
-    if (showMenu) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [showMenu]);
 
   const handleNavClick = (path) => {
     onNavigate(path);
@@ -111,5 +102,10 @@ function Navigation({ currentPath, onNavigate }) {
     </>
   );
 }
+
+Navigation.propTypes = {
+  currentPath: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func.isRequired
+};
 
 export default Navigation;
