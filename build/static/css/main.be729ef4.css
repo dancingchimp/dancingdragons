@@ -525,9 +525,6 @@ video {
     max-width: 1536px;
   }
 }
-.invisible {
-  visibility: hidden;
-}
 .static {
   position: static;
 }
@@ -664,6 +661,9 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
+.mt-auto {
+  margin-top: auto;
+}
 .block {
   display: block;
 }
@@ -691,8 +691,8 @@ video {
 .h-1 {
   height: 0.25rem;
 }
-.h-12 {
-  height: 3rem;
+.h-14 {
+  height: 3.5rem;
 }
 .h-2 {
   height: 0.5rem;
@@ -709,21 +709,8 @@ video {
 .h-full {
   height: 100%;
 }
-.max-h-0 {
-  max-height: 0px;
-}
-.max-h-64 {
-  max-height: 16rem;
-}
 .max-h-\[calc\(100vh-200px\)\] {
   max-height: calc(100vh - 200px);
-}
-.min-h-\[100vh\] {
-  min-height: 100vh;
-}
-.min-h-\[calc\(var\(--vh\2c 1vh\)\*100\)\] {
-  min-height: calc(1vh * 100);
-  min-height: calc(var(--vh,1vh) * 100);
 }
 .min-h-screen {
   min-height: 100vh;
@@ -826,9 +813,6 @@ video {
 .cursor-pointer {
   cursor: pointer;
 }
-.touch-manipulation {
-  touch-action: manipulation;
-}
 .resize {
   resize: both;
 }
@@ -884,11 +868,6 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.space-x-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2rem * var(--tw-space-x-reverse));
-  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -987,11 +966,6 @@ video {
 .border-gray-700\/50 {
   border-color: rgb(55 65 81 / 0.5);
 }
-.border-gray-800 {
-  --tw-border-opacity: 1;
-  border-color: rgb(31 41 55 / 1);
-  border-color: rgb(31 41 55 / var(--tw-border-opacity, 1));
-}
 .border-orange-500 {
   --tw-border-opacity: 1;
   border-color: rgb(225 112 85 / 1);
@@ -1067,9 +1041,6 @@ video {
 .bg-orange-500\/10 {
   background-color: rgb(225 112 85 / 0.1);
 }
-.bg-orange-500\/20 {
-  background-color: rgb(225 112 85 / 0.2);
-}
 .bg-orange-500\/5 {
   background-color: rgb(225 112 85 / 0.05);
 }
@@ -1137,10 +1108,6 @@ video {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
-.py-1\.5 {
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-}
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1189,9 +1156,6 @@ video {
 }
 .pt-40 {
   padding-top: 10rem;
-}
-.pt-8 {
-  padding-top: 2rem;
 }
 .pt-\[env\(safe-area-inset-top\)\] {
   padding-top: env(safe-area-inset-top);
@@ -1482,12 +1446,6 @@ body {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.hover\:border-orange-500:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(225 112 85 / 1);
-  border-color: rgb(225 112 85 / var(--tw-border-opacity, 1));
-}
-
 .hover\:border-orange-500\/20:hover {
   border-color: rgb(225 112 85 / 0.2);
 }
@@ -1500,12 +1458,6 @@ body {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / 1);
   background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-gray-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / 1);
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-gray-800\/50:hover {
@@ -1633,34 +1585,12 @@ body {
 
 @media (min-width: 640px) {
 
-  .sm\:w-auto {
-    width: auto;
-  }
-
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .sm\:flex-row {
-    flex-direction: row;
-  }
-
-  .sm\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 4rem;
-  }
-
-  .sm\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 }
 
 @media (min-width: 768px) {
-
-  .md\:flex {
-    display: flex;
-  }
 
   .md\:hidden {
     display: none;
@@ -1698,16 +1628,6 @@ body {
     line-height: 4rem;
   }
 
-  .md\:text-7xl {
-    font-size: 4.5rem;
-    line-height: 4.75rem;
-  }
-
-  .md\:text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -1737,4 +1657,4 @@ body {
   }
 }
 
-/*# sourceMappingURL=main.5a17f185.css.map*/
+/*# sourceMappingURL=main.be729ef4.css.map*/

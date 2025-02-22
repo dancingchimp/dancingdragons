@@ -4,104 +4,94 @@ import { SignalContactModal } from '../system/SignalContactModal';
 function Navigation({ isMenuOpen, toggleMenu, closeMenu, currentPath, onNavigate }) {
   const [isSignalModalOpen, setIsSignalModalOpen] = useState(false);
 
-  const NAV_ITEMS = [
-    { name: 'Home', path: '/' },
-    { name: 'Activities', path: '/activities' },
-    { name: 'Community', path: '/community' },
-    { name: 'Events', path: '/events' }
-  ];
-
-  const handleNavClick = (path) => {
-    onNavigate(path);
-    closeMenu();
-  };
-
+  // Simple mobile-first navigation
   return (
     <>
-      {/* Mobile-optimized header */}
-      <header className="bg-[#1a202c] fixed top-0 left-0 right-0 z-50">
-        {/* Top nav bar */}
-        <nav className="h-12 px-4 flex items-center justify-between border-b border-gray-800">
-          {/* Logo */}
-          <div 
-            className="flex items-center cursor-pointer touch-manipulation"
-            onClick={() => handleNavClick('/')}
-          >
-            <i className="fas fa-dragon text-orange-500 text-base md:text-xl mr-2" />
-            <span className="text-sm md:text-base font-bold text-white">Dancing Dragons</span>
-          </div>
-
-          {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => handleNavClick(item.path)}
-                className={`text-sm font-medium transition-colors ${
-                  currentPath === item.path ? 'text-orange-500' : 'text-gray-300 hover:text-orange-400'
-                }`}
-              >
-                {item.name}
-              </button>
-            ))}
-            <button
-              onClick={() => setIsSignalModalOpen(true)}
-              className="bg-orange-500 hover:bg-orange-600 px-4 py-1.5 rounded-full 
-                       text-white text-sm font-semibold transition-colors"
-            >
-              Join Us
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 text-gray-300 hover:text-white touch-manipulation"
-            aria-label="Menu"
-          >
-            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-lg`} />
-          </button>
-        </nav>
-
-        {/* Mobile menu */}
+      {/* Small, non-fixed mobile header */}
+      <div className="w-full bg-gray-900 h-14 px-4 flex items-center justify-between">
+        {/* Logo */}
         <div 
-          className={`md:hidden bg-[#1a202c] border-b border-gray-800 
-                     transition-all duration-300 ${isMenuOpen ? 'max-h-64' : 'max-h-0 invisible'} 
-                     overflow-hidden`}
+          className="flex items-center"
+          onClick={() => onNavigate('/')}
         >
-          <div className="px-4 py-4 space-y-2">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => handleNavClick(item.path)}
-                className={`block w-full text-left px-4 py-2 rounded-lg text-base
-                           touch-manipulation transition-colors ${
-                  currentPath === item.path
-                    ? 'bg-orange-500/20 text-orange-500'
-                    : 'text-gray-300 hover:bg-gray-800'
-                }`}
-              >
-                {item.name}
+          <i className="fas fa-dragon text-orange-500 text-lg mr-2" />
+          <span className="text-base font-bold text-white">Dancing Dragons</span>
+        </div>
+
+        {/* Mobile-only menu button */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden p-2"
+        >
+          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-white text-lg`} />
+        </button>
+      </div>
+
+      {/* Mobile menu overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-gray-900 z-50 p-4">
+          <div className="flex flex-col h-full">
+            <div className="flex justify-between items-center mb-8">
+              <div className="flex items-center">
+                <i className="fas fa-dragon text-orange-500 text-lg mr-2" />
+                <span className="text-base font-bold text-white">Dancing Dragons</span>
+              </div>
+              <button onClick={closeMenu}>
+                <i className="fas fa-times text-white text-lg" />
               </button>
-            ))}
+            </div>
+            
+            <div className="flex-1 flex flex-col gap-4">
+              <button
+                onClick={() => {
+                  onNavigate('/');
+                  closeMenu();
+                }}
+                className="text-left text-white text-lg py-2"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => {
+                  onNavigate('/activities');
+                  closeMenu();
+                }}
+                className="text-left text-white text-lg py-2"
+              >
+                Activities
+              </button>
+              <button
+                onClick={() => {
+                  onNavigate('/community');
+                  closeMenu();
+                }}
+                className="text-left text-white text-lg py-2"
+              >
+                Community
+              </button>
+              <button
+                onClick={() => {
+                  onNavigate('/events');
+                  closeMenu();
+                }}
+                className="text-left text-white text-lg py-2"
+              >
+                Events
+              </button>
+            </div>
+
             <button
               onClick={() => {
                 setIsSignalModalOpen(true);
                 closeMenu();
               }}
-              className="w-full bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg
-                       text-white font-semibold transition-colors flex items-center 
-                       justify-center gap-2 touch-manipulation"
+              className="w-full bg-orange-500 text-white rounded-full py-4 text-lg font-semibold mt-auto"
             >
-              <i className="fas fa-user-plus" />
               Join Our Community
             </button>
           </div>
         </div>
-      </header>
-
-      {/* Header spacer */}
-      <div className="h-12" />
+      )}
 
       <SignalContactModal 
         isOpen={isSignalModalOpen}
