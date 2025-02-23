@@ -19,19 +19,19 @@ function Hero() {
           <div className="text-center lg:text-left max-w-lg mx-auto lg:mx-0">
             <h1 className="flex flex-col gap-2">
               <div className="text-6xl lg:text-7xl font-bold text-orange-500 tracking-tight">
-                Adventure
+                Dance
               </div>
               <div className="text-6xl lg:text-7xl font-bold text-orange-500 tracking-tight">
-                Awaits
+                Explore
               </div>
               <div className="text-6xl lg:text-7xl font-bold text-orange-500 tracking-tight">
-                You
+                Connect
               </div>
             </h1>
 
             <p className="mt-8 text-xl lg:text-2xl text-gray-300 leading-relaxed">
-              Join a thriving community of adventurous women exploring the outdoors, staying active, 
-              and building lasting friendships through shared experiences.
+              Join a vibrant community of women sharing incredible moments - from festival sunrises 
+              to mountain summits, dance floors to beach bonfires.
             </p>
 
             <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -55,19 +55,19 @@ function Hero() {
                          flex items-center justify-center gap-2"
               >
                 <i className="fas fa-compass" />
-                Explore Activities
+                See What's On
               </a>
             </div>
 
             {/* Highlight Features */}
             <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-4 lg:gap-6 text-sm">
               <div className="flex items-center gap-2 text-gray-300">
-                <i className="fas fa-mountain text-orange-500" />
-                Outdoor Adventures
+                <i className="fas fa-music text-orange-500" />
+                Festival Vibes
               </div>
               <div className="flex items-center gap-2 text-gray-300">
-                <i className="fas fa-person-running text-orange-500" />
-                Active Lifestyle
+                <i className="fas fa-mountain text-orange-500" />
+                Adventures
               </div>
               <div className="flex items-center gap-2 text-gray-300">
                 <i className="fas fa-heart text-orange-500" />

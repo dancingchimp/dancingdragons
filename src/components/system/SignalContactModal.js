@@ -1,5 +1,3 @@
-// src/components/system/SignalContactModal.js
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from './Modal';
@@ -11,11 +9,11 @@ export function SignalContactModal({ isOpen, onClose }) {
     <Modal 
       isOpen={isOpen} 
       onClose={onClose} 
-      title="Join Dancing Dragons"
+      title="Join the Fun!"
       size="md"
     >
       <div className="relative space-y-6">
-        {/* Close button - always visible */}
+        {/* Close button */}
         <button
           onClick={onClose}
           className="absolute -top-12 right-0 text-gray-400 hover:text-white p-2"
@@ -26,29 +24,30 @@ export function SignalContactModal({ isOpen, onClose }) {
 
         <div className="bg-gray-800/50 rounded-xl p-6 space-y-4">
           <div className="flex items-center gap-4 text-orange-300">
-            <i className="fas fa-shield-alt text-2xl" />
-            <h3 className="text-xl font-semibold">Secure Community Access</h3>
+            <i className="fas fa-sparkles text-2xl" />
+            <h3 className="text-xl font-semibold">Ready for Adventure?</h3>
           </div>
           
           <p className="text-gray-300">
-            To maintain our community's privacy and safety, all new members are personally vetted. Click below to start a private Signal conversation with our community lead.
+            Connect with us on Signal to join festival crews, adventure squads, and an amazing 
+            community of women who love to celebrate life!
           </p>
         </div>
 
         <div className="bg-gray-800/50 rounded-xl p-6 space-y-4">
-          <h4 className="font-semibold text-orange-300">What happens next:</h4>
+          <h4 className="font-semibold text-orange-300">Here's what happens next:</h4>
           <ol className="space-y-3 text-gray-300">
             <li className="flex items-start gap-3">
               <span className="text-orange-500 mt-1">1.</span>
-              <span>You'll be connected via Signal for a brief introduction</span>
+              <span>Quick hello on Signal - let's get to know each other!</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-orange-500 mt-1">2.</span>
-              <span>We'll share more about our community and answer your questions</span>
+              <span>Share what you love - festivals, hiking, or both?</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-orange-500 mt-1">3.</span>
-              <span>You'll receive private invites to relevant community groups</span>
+              <span>Get invited to the groups that match your vibe</span>
             </li>
           </ol>
         </div>
@@ -61,14 +60,13 @@ export function SignalContactModal({ isOpen, onClose }) {
             className="w-full bg-orange-500 hover:bg-orange-600 text-white 
                      py-4 rounded-xl text-lg font-semibold
                      flex items-center justify-center gap-2
-                     transition-all duration-300"
+                     transition-all duration-300 hover:scale-102"
             onClick={() => {
-              // Close modal after slight delay to ensure the link opens
               setTimeout(onClose, 100);
             }}
           >
-            <i className="fas fa-message" />
-            Connect on Signal
+            <i className="fas fa-sparkles" />
+            Let's Connect!
           </a>
 
           <button
@@ -77,13 +75,13 @@ export function SignalContactModal({ isOpen, onClose }) {
                      py-4 rounded-xl text-lg font-semibold
                      transition-colors duration-300"
           >
-            Return to Home
+            Maybe Later
           </button>
         </div>
 
         <p className="text-sm text-gray-400 text-center">
-          <i className="fas fa-lock mr-2" />
-          Your privacy is protected through Signal's end-to-end encryption
+          <i className="fas fa-heart text-orange-500 mr-2" />
+          Good Vibes & Great Adventures Await
         </p>
       </div>
     </Modal>

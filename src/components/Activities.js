@@ -31,36 +31,36 @@ ActivityCard.propTypes = {
 function Activities({ fullPage = false }) {
   const activities = [
     {
-      icon: "fa-mountain",
-      title: "Outdoor Adventures",
+      icon: "fa-music",
+      title: "Music & Festivals",
       items: [
-        "Multi-day backpacking trips",
-        "Rock climbing expeditions",
-        "Weekend hiking adventures",
-        "Kayaking & paddling trips",
-        "Mountain biking excursions"
+        "Music festival adventures",
+        "Dance gatherings & parties",
+        "Live music events",
+        "Silent disco nights",
+        "Beach parties & bonfires"
       ]
     },
     {
-      icon: "fa-person-running",
-      title: "Active Lifestyle",
+      icon: "fa-mountain",
+      title: "Adventure & Sport",
       items: [
+        "Weekend hiking trips",
+        "Rock climbing sessions",
+        "Kayaking adventures",
         "Trail running groups",
-        "Adventure bootcamps",
-        "Group fitness classes",
-        "Sports & recreation",
-        "Swimming & water sports"
+        "Sports & recreation"
       ]
     },
     {
       icon: "fa-heart",
-      title: "Wellness & Connection",
+      title: "Community & Fun",
       items: [
-        "Nutrition workshops",
-        "Wellness retreats",
-        "Team building activities",
         "Social gatherings",
-        "Community events"
+        "Group fitness classes",
+        "Weekend brunches",
+        "Beach days",
+        "Game nights"
       ]
     }
   ];
@@ -77,7 +77,7 @@ function Activities({ fullPage = false }) {
               Our Activities
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Join us for exciting adventures, active living, and meaningful connections with fellow adventurers.
+              From festival vibes to mountain peaks, join us for incredible experiences that bring women together.
             </p>
           </div>
         )}
