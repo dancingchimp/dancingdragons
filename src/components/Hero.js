@@ -33,8 +33,8 @@ function Hero() {
 
             <p className="mt-8 text-xl lg:text-2xl text-gray-300 leading-relaxed">
               We're living life to the fullest - dancing at festivals, exploring mountain peaks, 
-              and grinding through our 20s together. Join a community of women who believe in 
-              earning their story.
+              and sharing incredible moments together. Join a community of women who celebrate 
+              life's adventures.
             </p>
 
             <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
