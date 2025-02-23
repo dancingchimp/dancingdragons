@@ -6,15 +6,17 @@ import { EventProvider } from './context/EventContext';
 import {
   useMousePosition,
   EnhancedBackground,
-  GlowingCursor,
+  PulsingCircles,
   ParallaxBackground,
-  InteractiveStarField,
-  RippleEffect,
+  GlowingOrbs,
+  AuroraEffect,
   FlowField,
   WaveformVisualization,
   EnhancedLoadingAnimation,
-  InteractiveParticles
-} from './components/visuals';
+  InteractiveParticles,
+  SoundWaveCanvas,
+  InteractiveMountains
+} from './components/visuals/EnhancedVisuals';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -38,7 +40,7 @@ const PageLoader = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-900 relative overflow-hidden">
       <FlowField />
-      <InteractiveStarField />
+      <GlowingOrbs />
       <div className="relative z-10 text-center space-y-8">
         <EnhancedLoadingAnimation />
         <div className="relative w-48 h-1 bg-gray-800 rounded-full overflow-hidden">
@@ -51,7 +53,7 @@ const PageLoader = () => {
           {progress === 100 ? "Ready for adventure" : "Loading experience"}
         </div>
       </div>
-      <WaveformVisualization />
+      <SoundWaveCanvas />
     </div>
   );
 };
@@ -106,10 +108,10 @@ function AppContent() {
       {/* Background Effects */}
       <FlowField />
       <EnhancedBackground />
-      <InteractiveStarField />
+      <GlowingOrbs />
       <InteractiveParticles mousePosition={mousePosition} />
-      <GlowingCursor />
-      <RippleEffect />
+      <AuroraEffect />
+      <PulsingCircles />
 
       {/* Content Wrapper */}
       <ParallaxBackground>
