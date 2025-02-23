@@ -1,6 +1,7 @@
-// src/components/community/CommunityFeature.js
+// src/components/CommunityFeature.js
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function CommunityFeature({ title, description, icon }) {
   return (
@@ -14,5 +15,10 @@ function CommunityFeature({ title, description, icon }) {
   );
 }
 
-export { CommunityFeature };
+CommunityFeature.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired
+};
+
 export default CommunityFeature;

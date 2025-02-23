@@ -32,35 +32,35 @@ function Activities({ fullPage = false }) {
   const activities = [
     {
       icon: "fa-mountain",
-      title: "Adventure & Travel",
+      title: "Outdoor Adventures",
       items: [
-        "International expeditions",
-        "Weekend mountain retreats",
-        "Rock climbing experiences",
-        "Hiking adventures",
-        "Kayaking expeditions"
+        "Multi-day backpacking trips",
+        "Rock climbing expeditions",
+        "Weekend hiking adventures",
+        "Kayaking & paddling trips",
+        "Mountain biking excursions"
       ]
     },
     {
-      icon: "fa-music",
-      title: "Movement & Dance",
+      icon: "fa-person-running",
+      title: "Active Lifestyle",
       items: [
-        "Dance gatherings",
-        "Music festivals",
-        "Yoga sessions",
-        "Movement workshops",
-        "Sound healing"
+        "Trail running groups",
+        "Adventure bootcamps",
+        "Group fitness classes",
+        "Sports & recreation",
+        "Swimming & water sports"
       ]
     },
     {
       icon: "fa-heart",
-      title: "Wellness & Growth",
+      title: "Wellness & Connection",
       items: [
-        "Meditation",
-        "Personal development",
-        "Qi Gong",
-        "Creative workshops",
-        "Community support"
+        "Nutrition workshops",
+        "Wellness retreats",
+        "Team building activities",
+        "Social gatherings",
+        "Community events"
       ]
     }
   ];
@@ -77,7 +77,7 @@ function Activities({ fullPage = false }) {
               Our Activities
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Explore a diverse range of experiences designed to challenge, inspire, and connect.
+              Join us for exciting adventures, active living, and meaningful connections with fellow adventurers.
             </p>
           </div>
         )}

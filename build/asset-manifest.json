@@ -1,20 +1,39 @@
 {
   "files": {
-    "main.css": "/dancingdragons/static/css/main.be729ef4.css",
-    "main.js": "/dancingdragons/static/js/main.74412122.js",
-    "runtime-main.js": "/dancingdragons/static/js/runtime-main.9fffc7c1.js",
-    "vendors.js": "/dancingdragons/static/js/vendors.224561d5.js",
+    "main.css": "/dancingdragons/static/css/main.9bc9d0df.css",
+    "main.js": "/dancingdragons/static/js/main.70a53372.js",
+    "runtime-main.js": "/dancingdragons/static/js/runtime-main.c522f845.js",
+    "static/js/985.5ebd1c17.chunk.js": "/dancingdragons/static/js/985.5ebd1c17.chunk.js",
+    "static/js/888.c6d3758b.chunk.js": "/dancingdragons/static/js/888.c6d3758b.chunk.js",
+    "static/js/741.ac660377.chunk.js": "/dancingdragons/static/js/741.ac660377.chunk.js",
+    "static/js/894.1c1926df.chunk.js": "/dancingdragons/static/js/894.1c1926df.chunk.js",
+    "static/js/59.fedf0664.chunk.js": "/dancingdragons/static/js/59.fedf0664.chunk.js",
+    "static/js/578.decd15a3.chunk.js": "/dancingdragons/static/js/578.decd15a3.chunk.js",
+    "static/js/828.7f0c51bd.chunk.js": "/dancingdragons/static/js/828.7f0c51bd.chunk.js",
+    "static/js/962.c2058ac4.chunk.js": "/dancingdragons/static/js/962.c2058ac4.chunk.js",
+    "static/js/953.0868a07c.chunk.js": "/dancingdragons/static/js/953.0868a07c.chunk.js",
+    "static/js/729.4a3be055.chunk.js": "/dancingdragons/static/js/729.4a3be055.chunk.js",
+    "vendors.js": "/dancingdragons/static/js/vendors.b2f2ed56.js",
     "index.html": "/dancingdragons/index.html",
-    "static/media/index.cs": "/dancingdragons/static/media/index.649ad5c7312b5b3fa5ed.cs",
-    "main.be729ef4.css.map": "/dancingdragons/static/css/main.be729ef4.css.map",
-    "main.74412122.js.map": "/dancingdragons/static/js/main.74412122.js.map",
-    "runtime-main.9fffc7c1.js.map": "/dancingdragons/static/js/runtime-main.9fffc7c1.js.map",
-    "vendors.224561d5.js.map": "/dancingdragons/static/js/vendors.224561d5.js.map"
+    "main.9bc9d0df.css.map": "/dancingdragons/static/css/main.9bc9d0df.css.map",
+    "main.70a53372.js.map": "/dancingdragons/static/js/main.70a53372.js.map",
+    "runtime-main.c522f845.js.map": "/dancingdragons/static/js/runtime-main.c522f845.js.map",
+    "985.5ebd1c17.chunk.js.map": "/dancingdragons/static/js/985.5ebd1c17.chunk.js.map",
+    "888.c6d3758b.chunk.js.map": "/dancingdragons/static/js/888.c6d3758b.chunk.js.map",
+    "741.ac660377.chunk.js.map": "/dancingdragons/static/js/741.ac660377.chunk.js.map",
+    "894.1c1926df.chunk.js.map": "/dancingdragons/static/js/894.1c1926df.chunk.js.map",
+    "59.fedf0664.chunk.js.map": "/dancingdragons/static/js/59.fedf0664.chunk.js.map",
+    "578.decd15a3.chunk.js.map": "/dancingdragons/static/js/578.decd15a3.chunk.js.map",
+    "828.7f0c51bd.chunk.js.map": "/dancingdragons/static/js/828.7f0c51bd.chunk.js.map",
+    "962.c2058ac4.chunk.js.map": "/dancingdragons/static/js/962.c2058ac4.chunk.js.map",
+    "953.0868a07c.chunk.js.map": "/dancingdragons/static/js/953.0868a07c.chunk.js.map",
+    "729.4a3be055.chunk.js.map": "/dancingdragons/static/js/729.4a3be055.chunk.js.map",
+    "vendors.b2f2ed56.js.map": "/dancingdragons/static/js/vendors.b2f2ed56.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.9fffc7c1.js",
-    "static/js/vendors.224561d5.js",
-    "static/css/main.be729ef4.css",
-    "static/js/main.74412122.js"
+    "static/js/runtime-main.c522f845.js",
+    "static/js/vendors.b2f2ed56.js",
+    "static/css/main.9bc9d0df.css",
+    "static/js/main.70a53372.js"
   ]
 }

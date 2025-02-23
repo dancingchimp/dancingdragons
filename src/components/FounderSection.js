@@ -45,55 +45,55 @@ function PillarCard({ title, icon = "fa-diamond" }) {
 function FounderSection() {
   const story = [
     {
-      icon: "fa-rocket",
-      title: "Early Bitcoin Vision",
-      content: "As an early Bitcoin investor, I made a commitment to hold until the bull market of 2030. This long-term vision reflects my belief in transformative technologies."
+      icon: "fa-mountain",
+      title: "Adventure Leader",
+      content: "With experience leading outdoor expeditions, I've developed a passion for helping women discover their strength through adventure."
     },
     {
       icon: "fa-table-tennis-paddle-ball",
       title: "Athletic Background",
-      content: "Growing up immersed in tennis, I learned discipline, strategy, and the importance of continuous improvement."
+      content: "Growing up immersed in competitive tennis taught me discipline, strategy, and the joy of physical activity."
+    },
+    {
+      icon: "fa-bitcoin",
+      title: "Early Bitcoin Vision",
+      content: "As an early Bitcoin investor, I'm holding until 2030. This long-term vision reflects my belief in transformative opportunities."
     },
     {
       icon: "fa-om",
       title: "Eastern Philosophy",
-      content: "Through exploring psychedelics, eastern philosophy, and psychology, I discovered profound insights about energy underlying all physical reality."
-    },
-    {
-      icon: "fa-yin-yang",
-      title: "Internal Arts",
-      content: "My journey led me to research internal martial arts and ancient energetic practices, deepening my understanding of mind-body connection."
+      content: "My personal journey through eastern philosophy and meditation has shaped my approach to community building and leadership."
     }
   ];
 
   const interests = [
     {
       icon: "fa-mountain",
-      title: "Adventure Seeker",
+      title: "Adventure Guide",
       description: "Leading expeditions and exploring new horizons"
     },
     {
-      icon: "fa-music",
-      title: "Movement & Dance",
-      description: "Expressing through rhythm and flow"
-    },
-    {
-      icon: "fa-brain",
-      title: "Consciousness",
-      description: "Exploring states of awareness"
+      icon: "fa-person-hiking",
+      title: "Trail Explorer",
+      description: "Discovering hidden paths and peaks"
     },
     {
       icon: "fa-users",
       title: "Community Building",
       description: "Creating spaces for growth and connection"
+    },
+    {
+      icon: "fa-heart",
+      title: "Wellness Advocate",
+      description: "Promoting holistic health and vitality"
     }
   ];
 
   const pillars = [
     { title: "Adventure", icon: "fa-mountain" },
-    { title: "Movement", icon: "fa-music" },
-    { title: "Inner Work", icon: "fa-om" },
+    { title: "Activity", icon: "fa-person-running" },
     { title: "Connection", icon: "fa-users" },
+    { title: "Wellness", icon: "fa-heart" },
   ];
 
   return (
@@ -109,8 +109,7 @@ function FounderSection() {
             <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"></div>
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Building a community where adventure meets wisdom, where every journey
-            contributes to collective growth and transformation.
+            Building a community where adventure ignites personal growth and lasting friendships.
           </p>
         </div>
 
@@ -118,9 +117,9 @@ function FounderSection() {
           <div className="space-y-12">
             <div className="prose prose-lg text-gray-300">
               <p className="text-xl mb-12 leading-relaxed">
-                Dancing Dragons emerged from a vision of creating spaces where women can
-                explore both outer adventures and inner landscapes. Through leadership
-                and mentorship, we empower members to step into their full potential.
+                Dancing Dragons emerged from a passion for outdoor adventure and community building. 
+                Through leadership and mentorship, we empower women to embrace challenges and discover 
+                their strength in the company of like-minded adventurers.
               </p>
             </div>
 
@@ -133,9 +132,9 @@ function FounderSection() {
             <div className="bg-gradient-to-r from-gray-800/30 to-gray-800/10 rounded-2xl p-10 mt-12 border border-gray-700/30">
               <h3 className="text-3xl font-bold mb-8 text-orange-300">Leadership Vision</h3>
               <p className="text-gray-300 text-lg mb-10 leading-relaxed">
-                While I provide resources and guidance, Dancing Dragons thrives through
-                distributed leadership. We actively identify and empower women to take
-                on leadership roles, creating a sustainable and evolving community.
+                While I guide and facilitate, Dancing Dragons thrives through distributed leadership. 
+                We actively encourage members to lead adventures, share skills, and contribute to our 
+                growing community of adventurous spirits.
               </p>
               <div className="grid sm:grid-cols-2 gap-6">
                 {interests.map((interest, index) => (

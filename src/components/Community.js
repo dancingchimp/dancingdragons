@@ -1,6 +1,3 @@
-// File: src/components/Community.js
-// Replaces the existing Community.js file
-
 import React, { useState } from 'react';
 import CommunityFeature from './CommunityFeature';
 import { SignalContactModal } from './system/SignalContactModal';
@@ -10,34 +7,34 @@ function Community() {
   
   const features = [
     {
-      icon: "fa-users",
-      title: "Build Real Connections",
-      description: "Form lasting friendships with women who share your passions for adventure and growth."
+      icon: "fa-mountain",
+      title: "Adventure Together",
+      description: "Join regular outdoor expeditions, from day hikes to multi-day adventures, with experienced guides and fellow explorers."
     },
     {
-      icon: "fa-heart",
-      title: "Supportive Environment",
-      description: "Experience a drama-free space focused on genuine connections and mutual support."
+      icon: "fa-person-running",
+      title: "Stay Active",
+      description: "Participate in group fitness activities, sports events, and outdoor workouts with supportive training partners."
     },
     {
       icon: "fa-compass",
       title: "Expert Guidance",
-      description: "Learn from experienced adventurers in a supportive and encouraging setting."
+      description: "Learn from experienced adventurers and athletes in a supportive and encouraging environment."
+    },
+    {
+      icon: "fa-heart",
+      title: "Real Connections",
+      description: "Form lasting friendships with women who share your passion for adventure and active living."
     },
     {
       icon: "fa-fire",
-      title: "Shared Adventures",
-      description: "Create unforgettable memories with fellow adventurers on exciting journeys."
+      title: "Challenge Yourself",
+      description: "Push your boundaries and discover your potential through exciting physical challenges and adventures."
     },
     {
-      icon: "fa-seedling",
-      title: "Personal Growth",
-      description: "Develop new skills and discover your potential in a nurturing community."
-    },
-    {
-      icon: "fa-puzzle-piece",
-      title: "Find Your Tribe",
-      description: "Connect with women who understand and share your adventurous spirit."
+      icon: "fa-users",
+      title: "Team Spirit",
+      description: "Experience the power of teamwork and mutual support in all our activities and adventures."
     }
   ];
 
@@ -48,8 +45,8 @@ function Community() {
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold mb-6 text-orange-300">Join Our Community</h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Be part of something special. Connect with women who inspire,
-              encourage, and empower each other.
+              Be part of an active, supportive community of women who inspire and 
+              empower each other through shared adventures and experiences.
             </p>
           </div>
 
@@ -71,7 +68,7 @@ function Community() {
             </button>
           </div>
 
-          {/* Privacy features */}
+          {/* Community features */}
           <div className="mt-24 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
               <div className="text-orange-500 text-2xl mb-4">
@@ -83,26 +80,26 @@ function Community() {
             
             <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
               <div className="text-orange-500 text-2xl mb-4">
-                <i className="fas fa-lock"></i>
+                <i className="fas fa-users"></i>
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-orange-300">Encrypted Chats</h3>
-              <p className="text-gray-400">End-to-end encrypted Signal groups</p>
+              <h3 className="text-lg font-semibold mb-2 text-orange-300">Small Groups</h3>
+              <p className="text-gray-400">Intimate gatherings for better connections</p>
             </div>
             
             <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
               <div className="text-orange-500 text-2xl mb-4">
-                <i className="fas fa-user-secret"></i>
+                <i className="fas fa-map-marked-alt"></i>
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-orange-300">Private Events</h3>
-              <p className="text-gray-400">Location details shared securely</p>
+              <h3 className="text-lg font-semibold mb-2 text-orange-300">Local Adventures</h3>
+              <p className="text-gray-400">Regular activities in your area</p>
             </div>
             
             <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700">
               <div className="text-orange-500 text-2xl mb-4">
-                <i className="fas fa-database"></i>
+                <i className="fas fa-calendar"></i>
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-orange-300">Zero Storage</h3>
-              <p className="text-gray-400">No personal data stored</p>
+              <h3 className="text-lg font-semibold mb-2 text-orange-300">Regular Events</h3>
+              <p className="text-gray-400">Weekly and monthly activities</p>
             </div>
           </div>
         </div>
