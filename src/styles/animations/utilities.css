@@ -1,0 +1,45 @@
+/* src/styles/animations/utilities.css */
+
+/* Animation utility classes */
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+    --base-opacity: 0.5;
+  }
+  
+  .animate-sparkle {
+    animation: sparkle 1s ease-out forwards;
+  }
+  
+  .animate-pulse {
+    animation: energyPulse 4s ease-in-out infinite;
+    --scale: 1;
+  }
+  
+  /* Glass effect utilities */
+  .glass {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-dark {
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Visual effect utilities */
+  .glow {
+    filter: drop-shadow(0 0 10px var(--glow-color, rgba(255, 123, 77, 0.5)));
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px var(--neon-color, rgba(255, 123, 77, 0.8));
+  }
+  
+  .gradient-text {
+    background: linear-gradient(45deg, #e17055, #fab1a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }

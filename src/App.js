@@ -1,9 +1,13 @@
 // src/App.js
 
-import React, { useState, Suspense, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { AppProvider } from './context/AppContext';
 import { EventProvider } from './context/EventContext';
-import { CompleteVisualSystem, useMousePosition } from './components/visuals/EnhancedVisuals';
+import UnifiedVisualSystem from './components/visuals/UnifiedVisualSystem';
+
+// Import animation styles
+import './styles/animations/keyframes.css';
+import './styles/animations/utilities.css';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -32,7 +36,7 @@ const PageLoader = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-900 relative overflow-hidden">
-      <CompleteVisualSystem />
+      <UnifiedVisualSystem />
       <div className="relative z-10 text-center space-y-8">
         <div className="relative">
           <i className="fas fa-dragon text-6xl text-orange-500 animate-float" />
@@ -46,7 +50,7 @@ const PageLoader = () => {
           />
         </div>
         <div className="text-gray-300 text-lg font-light tracking-wider">
-          {progress === 100 ? "Ready to party" : "Loading the vibe"}
+          {progress === 100 ? "Ready for adventure" : "Loading the magic"}
         </div>
       </div>
     </div>
@@ -99,10 +103,10 @@ function AppContent() {
 
   return (
     <div className="relative min-h-screen bg-gray-900 overflow-hidden">
-      {/* Visual Effects */}
-      <CompleteVisualSystem />
+      {/* Visual System Layer */}
+      <UnifiedVisualSystem />
 
-      {/* Content */}
+      {/* Content Layer */}
       <div 
         className={`relative z-10 transition-all duration-500
                    ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}
