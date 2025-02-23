@@ -1,0 +1,91 @@
+/* src/styles/enhanced-animations.css */
+
+@keyframes neonWave {
+    0% {
+      opacity: 0.2;
+      transform: translateX(-100%) translateY(0%) rotate(var(--rotation));
+    }
+    50% {
+      opacity: 0.3;
+      transform: translateX(0%) translateY(-20%) rotate(calc(var(--rotation) + 5deg));
+    }
+    100% {
+      opacity: 0.2;
+      transform: translateX(100%) translateY(0%) rotate(var(--rotation));
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      filter: brightness(1);
+    }
+    25% {
+      transform: translate(30px, -30px) scale(1.1);
+      filter: brightness(1.2);
+    }
+    50% {
+      transform: translate(0, -50px) scale(1);
+      filter: brightness(1);
+    }
+    75% {
+      transform: translate(-30px, -30px) scale(1.1);
+      filter: brightness(1.2);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.5;
+      filter: blur(8px);
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+      filter: blur(12px);
+    }
+  }
+  
+  @keyframes sparkle {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1) rotate(180deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(0) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes energyField {
+    0%, 100% {
+      clip-path: circle(50% at center);
+      transform: scale(1);
+    }
+    50% {
+      clip-path: circle(45% at center);
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Add these animation utility classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-sparkle {
+    animation: sparkle 2s ease-out forwards;
+  }
+  
+  .animate-energy-field {
+    animation: energyField 4s ease-in-out infinite;
+  }
