@@ -50,9 +50,9 @@ function FounderSection() {
       content: "My journey started at music festivals, where I discovered the magic of bringing people together through shared experiences and rhythm."
     },
     {
-      icon: "fa-bitcoin",
-      title: "Early Bitcoin Vision",
-      content: "As an early Bitcoin investor, I'm holding until 2030. This long-term vision reflects my belief in transformative opportunities and community building."
+      icon: "fa-gem",
+      title: "Early Bitcoin Investor",
+      content: "While my early Bitcoin investments could allow for early retirement in 2030, I want to experience the genuine grind of my 20s first. Success feels better when you've earned it through hard work."
     },
     {
       icon: "fa-om",

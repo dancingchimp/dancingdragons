@@ -55,9 +55,9 @@ function Navigation({ currentPath, onNavigate }) {
             <nav className="space-y-2">
               {[
                 { path: '/', label: 'Home', icon: 'fa-house-heart' },
-                { path: '/events', label: 'Upcoming Fun', icon: 'fa-calendar-star' },
-                { path: '/activities', label: 'What We Do', icon: 'fa-sparkles' },
-                { path: '/community', label: 'The Vibe Tribe', icon: 'fa-users' }
+                { path: '/events', label: 'Festivals & Adventures', icon: 'fa-calendar-star' },
+                { path: '/activities', label: 'Join The Action', icon: 'fa-sparkles' },
+                { path: '/community', label: 'Our Community', icon: 'fa-users' }
               ].map(({ path, label, icon }) => (
                 <button
                   key={path}

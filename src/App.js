@@ -3,6 +3,7 @@
 import React, { useState, Suspense } from 'react';
 import { AppProvider } from './context/AppContext';
 import { EventProvider } from './context/EventContext';
+import { FestivalScene } from './components/visuals/FestivalVisuals';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -13,10 +14,14 @@ const FounderSection = React.lazy(() => import('./components/FounderSection'));
 const Events = React.lazy(() => import('./components/events'));
 const Navigation = React.lazy(() => import('./components/Navigation/Navigation'));
 
-// Simple loading component
+// Enhanced loading component
 const PageLoader = () => (
-  <div className="flex items-center justify-center h-screen">
-    <i className="fas fa-dragon text-orange-500 text-5xl" />
+  <div className="flex items-center justify-center h-screen bg-gray-900 relative">
+    <FestivalScene />
+    <div className="relative z-10 text-center">
+      <i className="fas fa-dragon text-orange-500 text-5xl mb-4 animate-bounce" />
+      <div className="text-gray-300 animate-pulse">Loading the vibe...</div>
+    </div>
   </div>
 );
 
@@ -50,13 +55,16 @@ function AppContent() {
   };
 
   return (
-    <>
-      <Navigation 
-        currentPath={currentPath}
-        onNavigate={handleNavigate}
-      />
-      {renderContent()}
-    </>
+    <div className="relative min-h-screen bg-gray-900 overflow-hidden">
+      <FestivalScene />
+      <div className="relative z-10">
+        <Navigation 
+          currentPath={currentPath}
+          onNavigate={handleNavigate}
+        />
+        {renderContent()}
+      </div>
+    </div>
   );
 }
 
