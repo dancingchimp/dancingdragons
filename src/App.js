@@ -3,20 +3,18 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { AppProvider } from './context/AppContext';
 import { EventProvider } from './context/EventContext';
-import { useMousePosition } from './components/visuals/InteractiveEffects';
-import { 
-  EnhancedBackground, 
-  GlowingCursor, 
-  ParallaxBackground, 
-  InteractiveStarField,
-  RippleEffect 
-} from './components/visuals/EnhancedVisuals';
 import {
+  useMousePosition,
+  EnhancedBackground,
+  GlowingCursor,
+  ParallaxBackground,
+  InteractiveStarField,
+  RippleEffect,
   FlowField,
   WaveformVisualization,
   EnhancedLoadingAnimation,
   InteractiveParticles
-} from './components/visuals/AdvancedVisuals';
+} from './components/visuals';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -27,7 +25,6 @@ const FounderSection = React.lazy(() => import('./components/FounderSection'));
 const Events = React.lazy(() => import('./components/events'));
 const Navigation = React.lazy(() => import('./components/Navigation/Navigation'));
 
-// Enhanced PageLoader with dynamic animation
 const PageLoader = () => {
   const [progress, setProgress] = useState(0);
 
@@ -106,7 +103,7 @@ function AppContent() {
 
   return (
     <div className="relative min-h-screen bg-gray-900 overflow-hidden">
-      {/* Dynamic Background Effects */}
+      {/* Background Effects */}
       <FlowField />
       <EnhancedBackground />
       <InteractiveStarField />
@@ -131,26 +128,23 @@ function AppContent() {
             {renderContent()}
           </main>
 
-          {/* Enhanced Scroll Indicator */}
-          <div 
-            className={`fixed bottom-8 right-8 transition-all duration-300 
-                       ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
+          {/* Scroll to Top Button */}
+          {scrolled && (
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="bg-orange-500/10 hover:bg-orange-500/20 p-4 rounded-full
-                       text-orange-500 transition-all duration-300 hover:scale-110
-                       relative group overflow-hidden"
+              className="fixed bottom-8 right-8 bg-orange-500/10 hover:bg-orange-500/20 
+                       p-4 rounded-full text-orange-500 transition-all duration-300 
+                       hover:scale-110 group overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 to-transparent 
-                            opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 
+                           to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <i className="fas fa-arrow-up relative z-10" />
             </button>
-          </div>
+          )}
         </div>
       </ParallaxBackground>
 
-      {/* Page Transition Effect */}
+      {/* Page Transition Overlay */}
       <div 
         className={`fixed inset-0 bg-black pointer-events-none transition-opacity duration-300
                    ${isTransitioning ? 'opacity-50' : 'opacity-0'}`}
