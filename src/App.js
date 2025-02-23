@@ -5,17 +5,15 @@ import { AppProvider } from './context/AppContext';
 import { EventProvider } from './context/EventContext';
 import {
   useMousePosition,
+  FlowField,
   EnhancedBackground,
-  PulsingCircles,
   ParallaxBackground,
   GlowingOrbs,
+  PulsingCircles,
   AuroraEffect,
-  FlowField,
-  WaveformVisualization,
-  EnhancedLoadingAnimation,
   InteractiveParticles,
   SoundWaveCanvas,
-  InteractiveMountains
+  EnhancedLoadingAnimation
 } from './components/visuals/EnhancedVisuals';
 
 // Lazy load components
@@ -45,7 +43,7 @@ const PageLoader = () => {
         <EnhancedLoadingAnimation />
         <div className="relative w-48 h-1 bg-gray-800 rounded-full overflow-hidden">
           <div 
-            className="absolute h-full bg-gradient-to-r from-orange-500 to-festival-purple transition-all duration-300"
+            className="absolute h-full bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
