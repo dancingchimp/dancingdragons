@@ -1,7 +1,9 @@
+// File: public/manifest.json
+// Location: public/manifest.json
+
 {
   "short_name": "Dancing Dragons",
-  "name": "Dancing Dragons",
-  "description": "A women's adventure & wellness community",
+  "name": "Dancing Dragons - Women's Adventure Community",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,21 +13,16 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
+      "sizes": "192x192"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1a202c",
-  "background_color": "#1a202c",
-  "orientation": "portrait",
-  "categories": ["community", "lifestyle", "health"],
-  "prefer_related_applications": false
+  "background_color": "#1a202c"
 }

@@ -1,13 +1,11 @@
-// src/App.js
+// File: src/App.js
+// Location: src/App.js
 
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { EventProvider } from './context/EventContext';
-import UnifiedVisualSystem from './components/visuals/UnifiedVisualSystem';
-
-// Import animation styles
-import './styles/animations/keyframes.css';
-import './styles/animations/utilities.css';
+import { CompleteVisualSystem, useMousePosition } from './components/visuals/EnhancedVisuals';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -15,8 +13,9 @@ const Activities = React.lazy(() => import('./components/Activities'));
 const Community = React.lazy(() => import('./components/Community'));
 const CommunityJoin = React.lazy(() => import('./components/community/CommunityJoin'));
 const FounderSection = React.lazy(() => import('./components/FounderSection'));
-const Events = React.lazy(() => import('./components/events'));
+const Events = React.lazy(() => import('./components/events/Events'));
 const Navigation = React.lazy(() => import('./components/Navigation/Navigation'));
+const ScrollTopButton = React.lazy(() => import('./components/ScrollTopButton'));
 
 const PageLoader = () => {
   const [progress, setProgress] = useState(0);
@@ -36,7 +35,7 @@ const PageLoader = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-900 relative overflow-hidden">
-      <UnifiedVisualSystem />
+      <CompleteVisualSystem />
       <div className="relative z-10 text-center space-y-8">
         <div className="relative">
           <i className="fas fa-dragon text-6xl text-orange-500 animate-float" />
@@ -50,15 +49,24 @@ const PageLoader = () => {
           />
         </div>
         <div className="text-gray-300 text-lg font-light tracking-wider">
-          {progress === 100 ? "Ready for adventure" : "Loading the magic"}
+          {progress === 100 ? "Ready to party" : "Loading the vibe"}
         </div>
       </div>
     </div>
   );
 };
 
+// Home page component
+const HomePage = () => (
+  <>
+    <Hero />
+    <Activities />
+    <FounderSection />
+  </>
+);
+
 function AppContent() {
-  const [currentPath, setCurrentPath] = useState('/');
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -71,69 +79,45 @@ function AppContent() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (path) => {
+  // Handle route transitions
+  useEffect(() => {
     setIsTransitioning(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     setTimeout(() => {
-      setCurrentPath(path);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => setIsTransitioning(false), 500);
-    }, 300);
-  };
-
-  const renderContent = () => {
-    switch(currentPath) {
-      case '/activities':
-        return <Activities fullPage={true} />;
-      case '/community':
-        return <Community />;
-      case '/events':
-        return <Events />;
-      case '/join':
-        return <CommunityJoin />;
-      default:
-        return (
-          <>
-            <Hero />
-            <Activities />
-            <FounderSection />
-          </>
-        );
-    }
-  };
+      setIsTransitioning(false);
+    }, 500);
+  }, [location.pathname]);
 
   return (
     <div className="relative min-h-screen bg-gray-900 overflow-hidden">
-      {/* Visual System Layer */}
-      <UnifiedVisualSystem />
+      {/* Visual Effects */}
+      <CompleteVisualSystem />
 
-      {/* Content Layer */}
+      {/* Content */}
       <div 
         className={`relative z-10 transition-all duration-500
                    ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}
                    ${scrolled ? 'bg-gray-900/50 backdrop-blur-sm' : ''}`}
       >
-        <Navigation 
-          currentPath={currentPath}
-          onNavigate={handleNavigate}
-          isScrolled={scrolled}
-        />
+        <Navigation isScrolled={scrolled} />
         
         <main className="relative">
-          {renderContent()}
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/activities" element={<Activities fullPage={true} />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/join" element={<CommunityJoin />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </main>
 
         {/* Scroll to Top Button */}
         {scrolled && (
-          <button
+          <ScrollTopButton 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 bg-orange-500/10 hover:bg-orange-500/20 
-                     p-4 rounded-full text-orange-500 transition-all duration-300 
-                     hover:scale-110 group overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 
-                         to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <i className="fas fa-arrow-up relative z-10" />
-          </button>
+          />
         )}
       </div>
 

@@ -1,7 +1,22 @@
 // src/components/visuals/UnifiedVisualSystem.js
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useMousePosition } from '../../hooks/useUtils';
+
+// Custom hook for mouse position
+function useMousePosition() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return mousePosition;
+}
 
 // Neon color palette
 const NEON_COLORS = {

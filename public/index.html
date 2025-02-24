@@ -1,104 +1,121 @@
+<!-- File: public/index.html -->
+<!-- Location: public/index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
-    <!-- Mobile-specific meta tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Dancing Dragons">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#1a202c">
-    <meta name="color-scheme" content="dark">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Dancing Dragons - A women's adventure & wellness community focused on authentic connections, growth, and shared experiences">
-    <meta name="keywords" content="women's community, adventure, wellness, dance, hiking, meditation, travel, dancing dragons">
-    <meta name="author" content="Dancing Dragons">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Dancing Dragons | Adventure Community">
-    <meta property="og:description" content="Join a community of women exploring life's greatest adventures. Hiking, dancing, wellness, and authentic connections.">
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg">
-    <meta property="og:url" content="https://dancingchimp.github.io/dancingdragons/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon/favicon-16x16.png">
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="mask-icon" href="%PUBLIC_URL%/favicon/safari-pinned-tab.svg" color="#e17055">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    
-    <!-- Preconnect to CDNs -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    
-    <title>Dancing Dragons | Adventure Community</title>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        /* Critical path CSS */
-        :root {
-            --color-background: #1a202c;
-            --color-orange: #e17055;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-background);
-            color: white;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            /* Add padding for iOS safe areas */
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-        }
-        
-        #root {
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-        }
-        
-        /* Loading state */
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background: var(--color-background);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .float { 
-            animation: float 6s ease-in-out infinite; 
-        }
-    </style>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#1a202c" />
+  <meta name="description" content="Dancing Dragons - Women's adventure & wellness community. Join us for festivals, hiking, and more!" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Dancing Dragons | Adventure & Wellness Community</title>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- SPA GitHub Pages redirect -->
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+  
+  <!-- Loading style -->
+  <style>
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #1a202c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    .loading-logo {
+      width: 100px;
+      height: 100px;
+      animation: pulse 2s infinite ease-in-out;
+      margin-bottom: 20px;
+      color: #e17055;
+      font-size: 60px;
+    }
+    .loading-progress {
+      width: 200px;
+      height: 4px;
+      background-color: rgba(225, 112, 85, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .loading-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 30%;
+      background-color: #e17055;
+      border-radius: 4px;
+      animation: progress 1.5s infinite ease-in-out;
+    }
+    .loading-text {
+      margin-top: 20px;
+      color: #e2e8f0;
+      font-size: 18px;
+      font-family: sans-serif;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+    @keyframes progress {
+      0% {
+        left: -30%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <noscript>
-        <div style="padding: 2rem; text-align: center;">
-            <h1>JavaScript Required</h1>
-            <p>Dancing Dragons requires JavaScript to be enabled in your browser. Please enable JavaScript to continue.</p>
-        </div>
-    </noscript>
-    
-    <div id="root">
-        <div class="loading">
-            <div style="text-align: center;">
-                <i class="fas fa-dragon" style="color: var(--color-orange); font-size: 3rem; margin-bottom: 1rem; animation: float 6s ease-in-out infinite;"></i>
-                <p>Loading Dancing Dragons...</p>
-            </div>
-        </div>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  
+  <!-- Loading indicator -->
+  <div class="loading">
+    <div class="loading-logo">
+      <i class="fas fa-dragon"></i>
     </div>
+    <div class="loading-progress"></div>
+    <div class="loading-text">Dancing Dragons</div>
+  </div>
+  
+  <div id="root"></div>
 </body>
 </html>
