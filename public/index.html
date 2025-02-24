@@ -1,39 +1,20 @@
-<!-- File: public/index.html -->
-<!-- Location: public/index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="theme-color" content="#1a202c" />
   <meta name="description" content="Dancing Dragons - Women's adventure & wellness community. Join us for festivals, hiking, and more!" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <base href="/" />
   <title>Dancing Dragons | Adventure & Wellness Community</title>
   
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <!-- SPA GitHub Pages redirect -->
-  <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // MIT License
-    // https://github.com/rafgraph/spa-github-pages
-    (function(l) {
-      if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
-  </script>
   
   <!-- Loading style -->
   <style>
@@ -103,6 +84,17 @@
       }
     }
   </style>
+
+  <!-- Debug script -->
+  <script type="text/javascript">
+    // Log page load and path information
+    window.addEventListener('load', function() {
+      console.log('Page loaded: public/index.html');
+      console.log('Current path:', window.location.pathname);
+      console.log('Current URL:', window.location.href);
+      console.log('Current origin:', window.location.origin);
+    });
+  </script>
 </head>
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>

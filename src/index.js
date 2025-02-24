@@ -1,6 +1,3 @@
-// File: src/index.js
-// Location: src/index.js
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -10,13 +7,13 @@ import './styles/index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <App />
     </Router>
   </React.StrictMode>
 );
 
-// Remove loading indicator with a slight delay to ensure the app has loaded
+// Remove loading indicator with a delay to ensure the app has loaded
 window.addEventListener('load', () => {
   const loadingElement = document.querySelector('.loading');
   if (loadingElement) {
