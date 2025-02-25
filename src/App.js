@@ -1,11 +1,11 @@
-// File: src/App.js
-// Location: src/App.js
+// src/App.js
+// These are optional updates to ensure smooth page transitions
 
 import React, { useState, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { EventProvider } from './context/EventContext';
-import { CompleteVisualSystem, useMousePosition } from './components/visuals/EnhancedVisuals';
+import { CompleteVisualSystem } from './components/visuals/EnhancedVisuals';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -70,6 +70,7 @@ function AppContent() {
   const [scrolled, setScrolled] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // Handle scrolling
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -79,14 +80,17 @@ function AppContent() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle route transitions
+  // Handle route transitions and ensure scroll to top
   useEffect(() => {
     setIsTransitioning(true);
+    // Always scroll to top when navigating
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsTransitioning(false);
     }, 500);
+    
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   return (

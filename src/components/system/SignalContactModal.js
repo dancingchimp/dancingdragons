@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from './Modal';
 
 export function SignalContactModal({ isOpen, onClose }) {
   const SIGNAL_DM = "https://signal.me/#eu/--flkIBHugKFa1TKXL56Kmeaedgfnriw96sBgiKuTB1izx9pLetA-K8vts4rIN90";
+
+  // Ensure we handle the UI properly when the modal opens
+  useEffect(() => {
+    if (isOpen) {
+      // Force scroll to top when modal opens
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [isOpen]);
 
   return (
     <Modal 
@@ -13,15 +21,6 @@ export function SignalContactModal({ isOpen, onClose }) {
       size="md"
     >
       <div className="relative space-y-6">
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute -top-12 right-0 text-gray-400 hover:text-white p-2"
-          aria-label="Close modal"
-        >
-          <i className="fas fa-times text-xl" />
-        </button>
-
         <div className="bg-gray-800/50 rounded-xl p-6 space-y-4">
           <div className="flex items-center gap-4 text-orange-300">
             <i className="fas fa-sparkles text-2xl" />
