@@ -604,6 +604,9 @@ video {
 .right-2 {
   right: 0.5rem;
 }
+.right-4 {
+  right: 1rem;
+}
 .right-8 {
   right: 2rem;
 }
@@ -615,6 +618,9 @@ video {
 }
 .top-1\/4 {
   top: 25%;
+}
+.top-4 {
+  top: 1rem;
 }
 .top-full {
   top: 100%;
@@ -1557,6 +1563,9 @@ html {
 .hover\:border-orange-500\/30:hover {
   border-color: rgb(225 112 85 / 0.3);
 }
+.hover\:bg-gray-700\/50:hover {
+  background-color: rgb(55 65 81 / 0.5);
+}
 .hover\:bg-gray-800\/50:hover {
   background-color: rgb(31 41 55 / 0.5);
 }
@@ -1762,4 +1771,4 @@ html {
   }
 }
 
-/*# sourceMappingURL=main.301e8475.css.map*/
+/*# sourceMappingURL=main.60b8103c.css.map*/
