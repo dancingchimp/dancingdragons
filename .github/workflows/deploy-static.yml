@@ -1,0 +1,38 @@
+# File: .github/workflows/deploy-static.yml
+
+name: Deploy Static Site
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'index.html'
+      - 'CNAME'
+      - '.github/workflows/deploy-static.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+      
+    - name: Create deployment directory
+      run: |
+        mkdir -p build
+        cp index.html build/
+        cp CNAME build/
+        cp public/favicon.ico build/ || echo "No favicon found, continuing anyway"
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: 'build'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
